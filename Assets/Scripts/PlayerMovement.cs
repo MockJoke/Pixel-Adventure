@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
-    [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private LayerMask groundLayer;
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
@@ -15,8 +15,6 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
 
     private enum MovementState { idle, running, jumping, falling }
-
-    [SerializeField] private AudioSource jumpSoundEffect;
 
     void Awake()
     {
@@ -40,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            jumpSoundEffect.Play();
+            AudioManager.instance.PlaySound(AudioType.characterJump);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
@@ -81,6 +79,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         Bounds bounds = playerCollider.bounds;
-        return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
     }
 }

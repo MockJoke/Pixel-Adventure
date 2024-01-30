@@ -5,7 +5,6 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioSource deathSoundEffect;
 
     void Awake()
     {
@@ -26,7 +25,7 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
-        deathSoundEffect.Play();
+        AudioManager.instance.PlaySound(AudioType.characterDeath);
         rb.bodyType = RigidbodyType2D.Static;
         animator.SetTrigger("death");
     }
