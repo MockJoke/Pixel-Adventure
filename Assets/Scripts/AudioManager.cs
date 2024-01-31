@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
     public Sound[] effectSounds;
     public Sound[] bgSounds;
 
-    private int currBgMusicIndex = 999;      // set high to signify no song playing
+    private int currBgMusicIndex = -1;      // set high to signify no song playing
 
     // a play music flag so we can stop playing music during cutscenes etc
     private bool shouldPlayMusic = false; 
@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
     {
         if (bgSounds.Length > 0)
         {
-            PlayMusic();
+            PlayMusic(true);
         }
     }
     
@@ -101,14 +101,28 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
     
-    public void PlayMusic() 
+    public void PlayMusic(bool random, AudioType audioName = AudioType.None) 
     {
         if (shouldPlayMusic == false) 
         {
             shouldPlayMusic = true;
-            // pick a random song from our playlist
-            currBgMusicIndex = UnityEngine.Random.Range(0, bgSounds.Length - 1);
-            bgSounds[currBgMusicIndex].source.volume = bgSounds[0].volume * mvol;
+
+            if (random)
+            {
+                // pick a random song from our playlist
+                currBgMusicIndex = GetRandomBgMusicIndex();
+            }
+            else
+            {
+                currBgMusicIndex = Array.FindIndex(effectSounds, sound => sound.name == audioName);
+
+                if (currBgMusicIndex < 0)
+                {
+                    // pick a random song from our playlist
+                    currBgMusicIndex = GetRandomBgMusicIndex();
+                }
+            }
+            
             bgSounds[currBgMusicIndex].source.Play();
         }
     }
@@ -123,6 +137,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private int GetRandomBgMusicIndex()
+    {
+        return UnityEngine.Random.Range(0, bgSounds.Length - 1);
+    }
+    
     // get the song name
     public AudioType getBgSongName() 
     {
@@ -130,7 +149,7 @@ public class AudioManager : MonoBehaviour
     }
 
     // if the music volume change update all the audio sources
-    public void musicVolumeChanged() 
+    public void musicVolumeChanged()
     {
         mvol = PlayerPrefs.GetFloat("MusicVolume", 0.75f);
         
@@ -140,7 +159,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //if the effects volume changed update the audio sources
+    // if the effects volume changed update the audio sources
     public void effectVolumeChanged() 
     {
         evol = PlayerPrefs.GetFloat("EffectsVolume", 0.75f);
