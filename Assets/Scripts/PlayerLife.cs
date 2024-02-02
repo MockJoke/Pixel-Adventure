@@ -5,6 +5,7 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
+    private static readonly int deathAnim = Animator.StringToHash("death");
 
     void Awake()
     {
@@ -27,7 +28,7 @@ public class PlayerLife : MonoBehaviour
     {
         AudioManager.instance.PlaySound(AudioType.characterDeath);
         rb.bodyType = RigidbodyType2D.Static;
-        animator.SetTrigger("death");
+        animator.SetTrigger(deathAnim);
     }
 
     private void RestartLevel()
