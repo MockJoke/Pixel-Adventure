@@ -4,29 +4,37 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
+
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask groundLayer;
-    
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     private float dirX = 0f;
+    private static readonly int animState = Animator.StringToHash("state");
 
-    private enum MovementState { idle, running, jumping, falling }
+    private enum MovementState
+    {
+        idle,
+        running,
+        jumping,
+        falling
+    }
 
     void Awake()
     {
         if (rb == null)
             rb = GetComponent<Rigidbody2D>();
-        
+
         if (playerCollider == null)
             playerCollider = GetComponent<BoxCollider2D>();
-        
+
         if (sprite == null)
             sprite = GetComponent<SpriteRenderer>();
-        
+
         if (animator == null)
             animator = GetComponent<Animator>();
     }
@@ -35,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
         Move();
-        
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
@@ -54,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         AudioManager.instance.PlaySound(AudioType.characterJump);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
-    
+
     private void UpdateAnimationState()
     {
         MovementState state;
@@ -83,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             state = MovementState.falling;
         }
 
-        animator.SetInteger("state", (int)state);
+        animator.SetInteger(animState, (int)state);
     }
 
     private bool IsGrounded()
@@ -91,4 +99,4 @@ public class PlayerMovement : MonoBehaviour
         Bounds bounds = playerCollider.bounds;
         return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
     }
-}
+}        
