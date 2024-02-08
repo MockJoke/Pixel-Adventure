@@ -99,4 +99,4 @@ public class PlayerMovement : MonoBehaviour
         Bounds bounds = playerCollider.bounds;
         return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
     }
-}        
+}     
