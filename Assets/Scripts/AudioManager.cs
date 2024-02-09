@@ -8,10 +8,10 @@ public class AudioManager : MonoBehaviour
 
     private int currBgMusicIndex = -1;      // set -1 to signify no song playing
 
-    public static AudioManager instance; // will hold a reference to the first AudioManager created
+    public static AudioManager instance;    // will hold a reference to the first AudioManager created
 
-    private float mVol; // Global music volume
-    private float eVol; // Global effects volume
+    private float mVol;     // Global music volume
+    private float eVol;     // Global effects volume
     
     public bool isMuted = false;
     
@@ -101,6 +101,12 @@ public class AudioManager : MonoBehaviour
     
     public void PlayMusic(bool random, AudioType audioName = AudioType.None)
     {
+        // If already playing on Music, stop it first
+        if (currBgMusicIndex != -1)
+        {
+            StopMusic();
+        }
+        
         if (random || audioName == AudioType.None)
         {
             // pick a random song from our playlist
@@ -120,7 +126,6 @@ public class AudioManager : MonoBehaviour
         bgSounds[currBgMusicIndex].source.Play();
     }
 
-    // stop music
     public void StopMusic()
     {
         bgSounds[currBgMusicIndex].source.Stop();
@@ -132,7 +137,6 @@ public class AudioManager : MonoBehaviour
         return UnityEngine.Random.Range(0, bgSounds.Length - 1);
     }
     
-    // get the song name
     public AudioType getCurrBgSongName() 
     {
         return bgSounds[currBgMusicIndex].name;
