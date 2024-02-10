@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 3850814005137349745}
   - component: {fileID: 6790150649511568376}
   - component: {fileID: 8131196515446993360}
-  - component: {fileID: 3723154795574792287}
+  - component: {fileID: 5564611171875485136}
+  - component: {fileID: 5033168804573020562}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -181,7 +182,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3723154795574792287
+--- !u!114 &5564611171875485136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,8 +191,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 570395276756341009}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecba099c67922945ab9e74018240228, type: 3}
+  m_Script: {fileID: 11500000, guid: ddad3d75c03800c47a515842ec414949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
   speed: 2
+  spriteRenderer: {fileID: 6567623006173341695}
+--- !u!114 &5033168804573020562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570395276756341009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74faf3b45ab162b4599de1ca6af16531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8131196515446993360}
+  enemyCollider: {fileID: 6790150649511568376}

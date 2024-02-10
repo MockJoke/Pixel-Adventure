@@ -216,8 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879e799fe8885674a8d5eb8073d4164b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeCount: 3
   rb: {fileID: 7074810212961939105}
   animator: {fileID: 7074810212961939116}
+  boxCollider: {fileID: 7074810212961939106}
 --- !u!114 &7074810212961939117
 MonoBehaviour:
   m_ObjectHideFlags: 0
