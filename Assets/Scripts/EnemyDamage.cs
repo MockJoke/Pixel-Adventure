@@ -24,6 +24,7 @@ public class EnemyDamage : MonoBehaviour
         {
             if (DotTest(collision.transform, transform, Vector2.down)) 
             {
+                CameraShaker.Instance.ShakeCamera(5f, 0.25f);
                 Die();
             } 
             else 
