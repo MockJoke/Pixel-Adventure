@@ -17,7 +17,7 @@ public class CameraShaker : Singleton<CameraShaker>
         basicMultiChannelPerlin = vCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    private void Update()
+    void Update()
     {
         if (shakeTime > 0)
         {

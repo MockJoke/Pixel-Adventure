@@ -32,6 +32,7 @@ public class Singleton<T> : MonoBehaviour where T : Component
                     instance = obj.AddComponent<T>();
                 }
             }
+            
             return instance;
         }
     }
