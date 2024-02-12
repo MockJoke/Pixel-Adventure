@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
 
     private int currBgMusicIndex = -1;      // set -1 to signify no song playing
 
-    public static AudioManager instance;    // will hold a reference to the first AudioManager created
+    public static AudioManager instance;
 
     private float mVol;     // Global music volume
     private float eVol;     // Global effects volume

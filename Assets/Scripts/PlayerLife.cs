@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] private int lifeCount = 3;
+    // [SerializeField] private int lifeCount = 3;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -31,6 +31,7 @@ public class PlayerLife : MonoBehaviour
 
     private void Die()
     {
+        CameraShaker.instance.ShakeCamera(5f, 0.25f);
         AudioManager.instance.PlaySound(AudioType.characterDeath);
         animator.SetTrigger(deathAnim);
         boxCollider.enabled = false;
