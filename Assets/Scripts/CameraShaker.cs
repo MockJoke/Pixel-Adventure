@@ -1,25 +1,15 @@
 using Cinemachine;
 using UnityEngine;
 
-public class CameraShaker : MonoBehaviour
+public class CameraShaker : Singleton<CameraShaker>
 {
     [SerializeField] private CinemachineVirtualCamera vCam;
     private CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin;
     private float shakeTime;
     
-    public static CameraShaker instance { get; private set; }
-    
-    private void Awake()
+    protected override void Awake()
     {
-        if (instance == null) 
-        {
-            instance = this; 
-        } 
-        else 
-        {
-            Destroy(gameObject);
-            return;
-        }
+        base.Awake();
             
         if (vCam == null)
             vCam = GetComponent<CinemachineVirtualCamera>();

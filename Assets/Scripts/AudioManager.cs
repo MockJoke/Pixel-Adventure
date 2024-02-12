@@ -1,31 +1,21 @@
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     public Sound[] effectSounds;
     public Sound[] bgSounds;
 
     private int currBgMusicIndex = -1;      // set -1 to signify no song playing
 
-    public static AudioManager instance;
-
     private float mVol;     // Global music volume
     private float eVol;     // Global effects volume
     
     public bool isMuted = false;
     
-    void Awake() 
+    protected override void Awake() 
     {
-        if (instance == null) 
-        {
-            instance = this; 
-        } 
-        else 
-        {
-            Destroy(gameObject);
-            return;
-        }
+        base.Awake();
 
         DontDestroyOnLoad(gameObject);
 
@@ -164,8 +154,6 @@ public class AudioManager : MonoBehaviour
         {
             s.source.volume = s.volume * eVol;
         }
-        
-        // effectSounds[0].source.Play();
     }
     
     private void SetMuteState()

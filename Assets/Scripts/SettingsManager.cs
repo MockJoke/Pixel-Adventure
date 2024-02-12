@@ -8,11 +8,11 @@ public class SettingsManager : MonoBehaviour
 
     public void OnMusicVolumeChange()
     {
-        AudioManager.instance.musicVolumeChanged(musicVolumeSlider.value);
+        AudioManager.Instance.musicVolumeChanged(musicVolumeSlider.value);
     }
     
     public void OnEffectsVolumeChange()
     {
-        AudioManager.instance.effectVolumeChanged(effectsVolumeSlider.value);
+        AudioManager.Instance.effectVolumeChanged(effectsVolumeSlider.value);
     }
 }
