@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    // [SerializeField] private int lifeCount = 3;
+    [SerializeField] private int LifeCount = 3;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -19,8 +19,10 @@ public class PlayerLife : MonoBehaviour
 
         if (boxCollider == null)
             boxCollider = GetComponent<BoxCollider2D>();
-    }
 
+        LifeCount = PlayerPrefs.GetInt("LifeCount", 3);
+    }
+    
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Trap"))
@@ -35,20 +37,21 @@ public class PlayerLife : MonoBehaviour
         AudioManager.Instance.PlaySound(AudioType.characterDeath);
         animator.SetTrigger(deathAnim);
         boxCollider.enabled = false;
+
+        LifeCount--;
+        PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
     private void CheckLifeStatus()
     {
-        RestartLevel();
-        
-        // if (lifeCount >= 0)
-        // {
-        //     RestartLevel();
-        // }
-        // else
-        // {
-        //     SceneManager.LoadScene("Scenes/End Screen");
-        // }
+        if (LifeCount > 0)
+        {
+            RestartLevel();
+        }
+        else
+        {
+            SceneManager.LoadScene("Scenes/Game Over Screen");
+        }
     }
     
     private void RestartLevel()
