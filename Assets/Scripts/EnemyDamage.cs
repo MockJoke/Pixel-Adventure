@@ -29,7 +29,8 @@ public class EnemyDamage : MonoBehaviour
             } 
             else 
             {
-                // player.Hit();
+                PlayerLife player = collision.gameObject.GetComponent<PlayerLife>();
+                player.Die();
             }
         }
     }

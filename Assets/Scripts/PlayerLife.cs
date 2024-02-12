@@ -29,7 +29,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         CameraShaker.Instance.ShakeCamera(5f, 0.25f);
         AudioManager.Instance.PlaySound(AudioType.characterDeath);
