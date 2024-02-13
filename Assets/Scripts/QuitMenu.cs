@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-public class EndMenu : MonoBehaviour
+public class QuitMenu : MonoBehaviour
 {
     public void Quit()
     {
