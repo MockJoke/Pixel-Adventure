@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int LifeCount = 3;
+    [SerializeField] private GameObject[] hearts;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider;
@@ -21,6 +22,8 @@ public class PlayerLife : MonoBehaviour
             boxCollider = GetComponent<BoxCollider2D>();
 
         LifeCount = PlayerPrefs.GetInt("LifeCount", 3);
+        
+        SetHearts();
     }
     
     void OnCollisionEnter2D(Collision2D collision)
@@ -38,10 +41,23 @@ public class PlayerLife : MonoBehaviour
         animator.SetTrigger(deathAnim);
         boxCollider.enabled = false;
 
+        LoseLife();
+    }
+
+    private void LoseLife()
+    {
         LifeCount--;
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
+    private void SetHearts()
+    {
+        for (int i = 0; i < LifeCount; i++)
+        {
+            hearts[i].SetActive(true);
+        }
+    }
+    
     private void CheckLifeStatus()
     {
         if (LifeCount > 0)
