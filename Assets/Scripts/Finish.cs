@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
+    [SerializeField] private GameObject confetti;
     private bool levelCompleted = false;
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -10,8 +10,9 @@ public class Finish : MonoBehaviour
         if (collision.gameObject.name == "Player" && !levelCompleted)
         {
             AudioManager.Instance.PlaySound(AudioType.levelFinish);
+            confetti.SetActive(true);
             levelCompleted = true;
-            Invoke(nameof(CompleteLevel), 2f);
+            Invoke(nameof(CompleteLevel), 2.15f);
         }
     }
 
@@ -19,6 +20,5 @@ public class Finish : MonoBehaviour
     {
         LevelManager.Instance.MarkLevelComplete();
         LevelManager.Instance.GoToNextLevel();
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
