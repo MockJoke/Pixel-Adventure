@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private ParticleSystem dust;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
@@ -37,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (animator == null)
             animator = GetComponent<Animator>();
+
+        if (dust == null)
+            dust = GetComponentInChildren<ParticleSystem>();
     }
 
     void Update()
@@ -59,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
+        CreateDust();
         AudioManager.Instance.PlaySound(AudioType.characterJump);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
@@ -69,11 +74,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (dirX > 0f)
         {
+            CreateDust();
             state = MovementState.running;
             sprite.flipX = false;
         }
         else if (dirX < 0f) 
         {
+            CreateDust();
             state = MovementState.running;
             sprite.flipX = true;
         }
@@ -98,5 +105,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Bounds bounds = playerCollider.bounds;
         return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
+    }
+    
+    private void CreateDust() 
+    {
+        dust.Play();
     }
 }     
