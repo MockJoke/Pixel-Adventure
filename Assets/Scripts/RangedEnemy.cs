@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private EnemyMovement enemyMovement;
+    
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
@@ -21,12 +23,8 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cooldownTimer = Mathf.Infinity;
 
-    [Header("Fireball Sound")]
-    [SerializeField] private AudioClip fireballSound;
-
-    //References
-    private Animator animator;
-    private EnemyMovement enemyMovement;
+    // [Header("Fireball Sound")]
+    // [SerializeField] private AudioClip fireballSound;
 
     void Awake()
     {
@@ -62,6 +60,7 @@ public class RangedEnemy : MonoBehaviour
         fireballs[FindFireball()].transform.position = firepoint.position;
         // fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
+    
     private int FindFireball()
     {
         for (int i = 0; i < fireballs.Length; i++)
@@ -69,6 +68,7 @@ public class RangedEnemy : MonoBehaviour
             if (!fireballs[i].activeInHierarchy)
                 return i;
         }
+        
         return 0;
     }
 
@@ -81,6 +81,7 @@ public class RangedEnemy : MonoBehaviour
 
         return hit.collider != null;
     }
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
