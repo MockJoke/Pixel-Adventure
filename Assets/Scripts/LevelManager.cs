@@ -46,6 +46,7 @@ public class LevelManager : Singleton<LevelManager>
     public LevelStatus GetLevelStatus(string level)
     {
         LevelStatus levelStatus = (LevelStatus)PlayerPrefs.GetInt(level, 0);
+        
         return levelStatus;
     }
 

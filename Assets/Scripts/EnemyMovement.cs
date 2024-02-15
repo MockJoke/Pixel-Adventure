@@ -25,13 +25,13 @@ public class EnemyMovement : WaypointFollower
     {
         base.Move();
         
-        animator.SetFloat(speedAnim, speed);
-        
-        if (Vector2.Distance(waypoints[currWaypointIndex].position, transform.position) < .1f)
+        if (Vector2.Distance(waypoints[currWaypointIndex].position, transform.position) < closingDistance)
         {
             if (currWaypointIndex == 0 || currWaypointIndex == waypoints.Length - 1)
                 Flip();
         }
+        
+        animator.SetFloat(speedAnim, speed);
     }
     
     private void Flip()
