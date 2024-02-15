@@ -5,7 +5,7 @@ public class WaypointFollower : MonoBehaviour
     public Transform[] waypoints;
     protected int currWaypointIndex = 0;
 
-    [SerializeField] private float speed = 2f;
+    public float speed = 2f;
 
     protected virtual void FixedUpdate()
     {
