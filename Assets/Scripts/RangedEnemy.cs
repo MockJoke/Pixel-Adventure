@@ -12,8 +12,8 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private int damage;
 
     [Header("Ranged Attack")]
-    [SerializeField] private Transform firepoint;
-    [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private Transform bulletPoint;
+    [SerializeField] private GameObject[] bullets;
 
     [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;
@@ -21,10 +21,9 @@ public class RangedEnemy : MonoBehaviour
 
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
+    
     private float cooldownTimer = Mathf.Infinity;
-
-    // [Header("Fireball Sound")]
-    // [SerializeField] private AudioClip fireballSound;
+    private static readonly int rangedAttackAnim = Animator.StringToHash("RangedAttack");
 
     void Awake()
     {
@@ -45,7 +44,7 @@ public class RangedEnemy : MonoBehaviour
             if (cooldownTimer >= attackCooldown)
             {
                 cooldownTimer = 0;
-                animator.SetTrigger("rangedAttack");
+                animator.SetTrigger(rangedAttackAnim);
             }
         }
 
@@ -57,15 +56,15 @@ public class RangedEnemy : MonoBehaviour
     {
         // AudioManager.Instance.PlaySound(fireballSound);
         cooldownTimer = 0;
-        fireballs[FindFireball()].transform.position = firepoint.position;
-        // fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+        bullets[FindBullet()].transform.position = bulletPoint.position;
+        bullets[FindBullet()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
     
-    private int FindFireball()
+    private int FindBullet()
     {
-        for (int i = 0; i < fireballs.Length; i++)
+        for (int i = 0; i < bullets.Length; i++)
         {
-            if (!fireballs[i].activeInHierarchy)
+            if (!bullets[i].activeInHierarchy)
                 return i;
         }
         

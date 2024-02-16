@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private BoxCollider2D coll;
+    
+    [Header("Movement")]
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
     private float lifetime;
-    private Animator anim;
-    private BoxCollider2D coll;
 
     private bool hit;
+    private static readonly int explodeAnim = Animator.StringToHash("Explode");
 
-    private void Awake()
+    void Awake()
     {
-        anim = GetComponent<Animator>();
-        coll = GetComponent<BoxCollider2D>();
+        if (animator == null)
+            animator = GetComponent<Animator>();
+        
+        if (coll == null)
+            coll = GetComponent<BoxCollider2D>();
     }
 
     public void ActivateProjectile()
@@ -40,17 +47,18 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject);
         hit = true;
         
-        // if (collision.CompareTag("Player"))
-        //     collision.GetComponent<Health>().TakeDamage(damage);
+        if (collision.CompareTag("Player"))
+            collision.GetComponent<PlayerLife>().Die();
         
         coll.enabled = false;
 
-        if (anim != null)
-            anim.SetTrigger("explode"); //When the object is a fireball explode it
+        if (animator != null)
+            animator.SetTrigger(explodeAnim); //When the object is a fireball explode it
         else
-            gameObject.SetActive(false); //When this hits any object deactivate arrow
+            Deactivate(); //When this hits any object deactivate arrow
     }
     
     private void Deactivate()

@@ -860,7 +860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 567392717}
   m_Layer: 0
-  m_Name: Waypoint 1
+  m_Name: Waypoint L
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5542,7 +5542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551920907}
   m_Layer: 0
-  m_Name: Waypoint 2
+  m_Name: Waypoint R
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -30339,7 +30339,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.380003
+      value: -1.3800004
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30479,6 +30479,14 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 1551920906}
+    - target: {fileID: 5564611171875485136, guid: d88d897fd7819aa45916c4a24ea86c5a, type: 3}
+      propertyPath: leftEdge
+      value: 
+      objectReference: {fileID: 567392717}
+    - target: {fileID: 5564611171875485136, guid: d88d897fd7819aa45916c4a24ea86c5a, type: 3}
+      propertyPath: rightEdge
+      value: 
+      objectReference: {fileID: 1551920907}
     - target: {fileID: 5564611171875485136, guid: d88d897fd7819aa45916c4a24ea86c5a, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
