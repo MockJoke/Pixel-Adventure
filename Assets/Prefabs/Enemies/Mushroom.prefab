@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 744369373, guid: 40374f9339dd5004d85f59db14006580, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -194,9 +194,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad3d75c03800c47a515842ec414949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
-  speed: 2
   spriteRenderer: {fileID: 6567623006173341695}
+  animator: {fileID: 8131196515446993360}
+  leftEdge: {fileID: 0}
+  rightEdge: {fileID: 0}
+  speed: 2
+  defaultSpriteFacing: -1
+  bulletsHolder: {fileID: 0}
+  idleDuration: 1
 --- !u!114 &5033168804573020562
 MonoBehaviour:
   m_ObjectHideFlags: 0

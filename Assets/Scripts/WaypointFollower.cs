@@ -3,17 +3,17 @@ using UnityEngine;
 public class WaypointFollower : MonoBehaviour
 {
     public Transform[] waypoints;
-    protected int currWaypointIndex = 0;
+    private int currWaypointIndex = 0;
     public float closingDistance = 0.1f;
 
     public float speed = 2f;
 
-    protected virtual void FixedUpdate()
+    void FixedUpdate()
     {
         Move();
     }
 
-    protected virtual void Move()
+    private void Move()
     {
         if (Vector2.Distance(waypoints[currWaypointIndex].position, transform.position) < closingDistance)
         {

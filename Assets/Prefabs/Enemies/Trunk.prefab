@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -443938715, guid: 23ce1e97743787a40989573bf2b72121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -196,13 +196,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddad3d75c03800c47a515842ec414949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  closingDistance: 0.25
-  speed: 2
   spriteRenderer: {fileID: 570276647487312480}
   animator: {fileID: 6539810992955560817}
+  leftEdge: {fileID: 0}
+  rightEdge: {fileID: 0}
+  speed: 2
+  defaultSpriteFacing: -1
+  bulletsHolder: {fileID: 0}
+  idleDuration: 1
 --- !u!114 &7434866133206311124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6539810992955560817}
-  enemyCollider: {fileID: 0}
+  enemyCollider: {fileID: 320459762605506644}
 --- !u!114 &6713333332134415950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,8 +235,8 @@ MonoBehaviour:
   attackCooldown: 2
   range: 3
   damage: 0
-  firepoint: {fileID: 4149918935549747550}
-  fireballs: []
+  bulletPoint: {fileID: 4149918935549747550}
+  bullets: []
   colliderDistance: -1.55
   boxCollider: {fileID: 320459762605506644}
   playerLayer:
@@ -251,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4149918935549747550}
   m_Layer: 0
-  m_Name: FirePoint
+  m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -266,7 +267,7 @@ Transform:
   m_GameObject: {fileID: 5116913956794534381}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: -0.055, z: 0}
+  m_LocalPosition: {x: -1.545, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

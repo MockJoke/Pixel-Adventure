@@ -1,11 +1,27 @@
 using UnityEngine;
 
-public class EnemyMovement : WaypointFollower
+public class EnemyMovement : MonoBehaviour
 {
-    private bool isMovingRight;
+    [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator animator;
-    private static readonly int speedAnim = Animator.StringToHash("Speed");
+    
+    [Header ("Patrol Points")]
+    [SerializeField] private Transform leftEdge;
+    [SerializeField] private Transform rightEdge;
+    
+    [Header("Movement parameters")]
+    [SerializeField] private float speed = 2f;
+    private Vector3 initScale;
+    [SerializeField] private int defaultSpriteFacing = -1;
+    [SerializeField] private Transform bulletsHolder;
+    private bool movingLeft = true;
+    
+    [Header("Idle Behaviour")]
+    [SerializeField] private float idleDuration = 1f;
+    private float idleTimer;
+    
+    private static readonly int movingAnim = Animator.StringToHash("Moving");
 
     void Awake()
     {
@@ -14,37 +30,61 @@ public class EnemyMovement : WaypointFollower
 
         if (animator == null)
             animator = GetComponent<Animator>();
+        
+        initScale = transform.localScale;
     }
 
     void Start()
     {
-        isMovingRight = transform.position.x < waypoints[currWaypointIndex].position.x;
+        movingLeft = defaultSpriteFacing == -1;
     }
 
-    protected override void Move()
+    private void OnDisable()
     {
-        base.Move();
-        
-        if (Vector2.Distance(waypoints[currWaypointIndex].position, transform.position) < closingDistance)
-        {
-            if (currWaypointIndex == 0 || currWaypointIndex == waypoints.Length - 1)
-                Flip();
-        }
-        
-        animator.SetFloat(speedAnim, speed);
+        animator.SetBool(movingAnim, false);
     }
-    
-    private void Flip()
+
+    void Update()
     {
-        if (isMovingRight)
+        if (movingLeft)
         {
-            spriteRenderer.flipX = false;
-            isMovingRight = false;
+            if (transform.position.x >= leftEdge.position.x)
+                MoveInDirection(-1);
+            else
+                DirectionChange();
         }
         else
         {
-            spriteRenderer.flipX = true;
-            isMovingRight = true;
+            if (transform.position.x <= rightEdge.position.x)
+                MoveInDirection(1);
+            else
+                DirectionChange();
         }
+    }
+
+    private void DirectionChange()
+    {
+        animator.SetBool(movingAnim, false);
+        idleTimer += Time.deltaTime;
+
+        if(idleTimer > idleDuration)
+            movingLeft = !movingLeft;
+    }
+
+    private void MoveInDirection(int _direction)
+    {
+        idleTimer = 0;
+        animator.SetBool(movingAnim, true);
+
+        //Make enemy face direction
+        transform.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction * defaultSpriteFacing,
+            initScale.y, initScale.z);
+        
+        // Change the scale of bullets holder for updating the bullet direction
+        bulletsHolder.localScale = -transform.localScale;
+
+        //Move in that direction
+        transform.position = new Vector3(transform.position.x + Time.deltaTime * _direction * speed,
+            transform.position.y, transform.position.z);
     }
 }
