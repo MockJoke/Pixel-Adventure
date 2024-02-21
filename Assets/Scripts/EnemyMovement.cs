@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float speed = 2f;
     private Vector3 initScale;
     [SerializeField] private int defaultSpriteFacing = -1;
+    [SerializeField] private bool isRangedEnemy = false;
     [SerializeField] private Transform bulletsHolder;
     private bool movingLeft = true;
     
@@ -81,7 +82,8 @@ public class EnemyMovement : MonoBehaviour
             initScale.y, initScale.z);
         
         // Change the scale of bullets holder for updating the bullet direction
-        bulletsHolder.localScale = -transform.localScale;
+        if (isRangedEnemy)
+            bulletsHolder.localScale = -transform.localScale;
 
         //Move in that direction
         transform.position = new Vector3(transform.position.x + Time.deltaTime * _direction * speed,
