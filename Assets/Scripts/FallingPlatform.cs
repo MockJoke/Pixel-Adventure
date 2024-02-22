@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FallingPlatform : MonoBehaviour
 {
+    [SerializeField] private GameObject container;
+    
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
@@ -40,6 +42,6 @@ public class FallingPlatform : MonoBehaviour
         springJoint.enabled = false;
         animator.SetTrigger(fallingAnim);
         
-        Destroy(gameObject, destroyDelay);
+        Destroy(container, destroyDelay);
     }
 }
