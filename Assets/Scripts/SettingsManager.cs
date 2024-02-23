@@ -1,10 +1,21 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
+    [SerializeField] private Canvas settingsCanvas;
     [SerializeField] private Slider musicVolumeSlider;
     [SerializeField] private Slider effectsVolumeSlider;
+    [Space]
+    [SerializeField] private UnityEvent onClose;
+    
+    private void Awake()
+    {
+        if (settingsCanvas == null)
+            settingsCanvas = GetComponent<Canvas>();
+    }
 
     public void OnMusicVolumeChange()
     {
@@ -14,5 +25,15 @@ public class SettingsManager : MonoBehaviour
     public void OnEffectsVolumeChange()
     {
         AudioManager.Instance.effectVolumeChanged(effectsVolumeSlider.value);
+    }
+    
+    public void OpenMenu()
+    {
+        settingsCanvas.enabled = true;
+    }
+
+    public void CloseMenu()
+    {
+        settingsCanvas.enabled = false;
     }
 }
