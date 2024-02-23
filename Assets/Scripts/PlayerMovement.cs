@@ -45,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Game Paused
+        if (Time.timeScale == 0)
+            return;
+        
         dirX = Input.GetAxisRaw("Horizontal");
         Move();
 
