@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a69f654bb0fec4687a28769b79db9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsCanvas: {fileID: 0}
+  settingsCanvas: {fileID: 3364736904506233459}
   musicVolumeSlider: {fileID: 6799690351743290894}
   effectsVolumeSlider: {fileID: 7680673333350048154}
   onClose:

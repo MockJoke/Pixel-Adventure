@@ -18,10 +18,12 @@ public class PauseManager : MonoBehaviour
         SetTimeScale(false);
     }
 
-    public void CloseMenu()
+    public void CloseMenu(bool resetTimeScale = true)
     {
         pauseCanvas.enabled = false;
-        SetTimeScale(true);
+        
+        if (resetTimeScale)
+            SetTimeScale(true);
     }
 
     public void HomeMenu()
@@ -38,7 +40,7 @@ public class PauseManager : MonoBehaviour
 
     public void Settings()
     {
-        pauseCanvas.enabled = false;
+        CloseMenu(false);
         settingsManager.OpenMenu();
     }
 
