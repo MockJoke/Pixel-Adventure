@@ -26,9 +26,16 @@ public class SettingsManager : MonoBehaviour
     {
         AudioManager.Instance.effectVolumeChanged(effectsVolumeSlider.value);
     }
+
+    private void SetVolumeSliderValues()
+    {
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+        effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
+    }
     
     public void OpenMenu()
     {
+        SetVolumeSliderValues();
         settingsCanvas.enabled = true;
     }
 
