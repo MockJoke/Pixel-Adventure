@@ -1,15 +1,21 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private Canvas HomeCanvas;
     [SerializeField] private Canvas LevelsCanvas;
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private TextMeshProUGUI startBtnText;
     
+    void Awake()
+    {
+        startBtnText.text = LevelManager.Instance.GetLatestUnlockedLevelNo() == 0 ? "START" : "CONTINUE";
+    }
+
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.Instance.GoToLatestUnlockedLevel();
     }
     
     public void OpenHomeMenu()

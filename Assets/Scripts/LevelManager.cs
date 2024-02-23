@@ -42,6 +42,26 @@ public class LevelManager : Singleton<LevelManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public int GetLatestUnlockedLevelNo()
+    {
+        int i = 0;
+        
+        foreach (string level in Levels)
+        {
+            if (GetLevelStatus(level) == LevelStatus.Unlocked)
+            {
+                i = Array.IndexOf(Levels, level);
+            }
+        }
+
+        return i;
+    }
+    
+    public void GoToLatestUnlockedLevel()
+    {
+        SceneManager.LoadScene(GetLatestUnlockedLevelNo() + 1);
+    }
     
     public LevelStatus GetLevelStatus(string level)
     {
