@@ -28,8 +28,8 @@ public class SettingsManager : MonoBehaviour
 
     private void SetVolumeSliderValues()
     {
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume");
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        effectsVolumeSlider.value = PlayerPrefs.GetFloat("EffectsVolume", 1f);
     }
     
     public void OpenMenu()
