@@ -5,22 +5,38 @@ public class StartMenu : MonoBehaviour
 {
     [SerializeField] private Canvas HomeCanvas;
     [SerializeField] private Canvas LevelsCanvas;
-    [SerializeField] private Canvas SettingsCanvas;
+    [SerializeField] private SettingsManager settingsManager;
     
     public void StartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-
-    public void Levels()
+    
+    public void OpenHomeMenu()
     {
-        HomeCanvas.enabled = false;
-        LevelsCanvas.enabled = true;
+        HomeCanvas.enabled = true;
     }
     
-    public void Settings()
+    public void CloseHomeMenu()
     {
         HomeCanvas.enabled = false;
-        SettingsCanvas.enabled = true;
+    }
+    
+    public void OpenLevelsMenu()
+    {
+        CloseHomeMenu();
+        LevelsCanvas.enabled = true;
+    }
+
+    public void CloseLevelsMenu()
+    {
+        LevelsCanvas.enabled = false;
+        OpenHomeMenu();
+    }
+    
+    public void OpenSettingsMenu()
+    {
+        CloseHomeMenu();
+        settingsManager.OpenMenu();
     }
 }

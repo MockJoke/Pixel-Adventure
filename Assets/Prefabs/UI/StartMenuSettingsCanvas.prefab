@@ -388,8 +388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a69f654bb0fec4687a28769b79db9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settingsCanvas: {fileID: 5104674397529561801}
   musicVolumeSlider: {fileID: 4794777346032179244}
   effectsVolumeSlider: {fileID: 1260395989087950237}
+  onClose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2911066570090406326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1572,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8724681123584263510, guid: 605ef1dd4374a8140bec9354a35de917, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724681123584263510, guid: 605ef1dd4374a8140bec9354a35de917, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 294498250335217021}
+    - target: {fileID: 8724681123584263510, guid: 605ef1dd4374a8140bec9354a35de917, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724681123584263510, guid: 605ef1dd4374a8140bec9354a35de917, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724681123584263510, guid: 605ef1dd4374a8140bec9354a35de917, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
