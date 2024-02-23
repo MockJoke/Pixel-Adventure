@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1068534609939718879, guid: f5376c980befaa84fa8376d29a2ddcb4, type: 3}
       propertyPath: onClose.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMenu
+      value: OpenPauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1068534609939718879, guid: f5376c980befaa84fa8376d29a2ddcb4, type: 3}
       propertyPath: onClose.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -26926,7 +26926,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3800085
+      value: -1.3800175
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27412,7 +27412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5639507554322705003, guid: 741469164a2c18446a3007ba806366bc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMenu
+      value: OpenPauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 5639507554322705003, guid: 741469164a2c18446a3007ba806366bc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -27696,12 +27696,12 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1977460236}
-  - {fileID: 2080032986}
-  - {fileID: 749281734}
-  - {fileID: 1122050830}
   - {fileID: 2236901225146525174}
   - {fileID: 2728440179732677087}
   - {fileID: 482680088}
+  - {fileID: 2080032986}
+  - {fileID: 749281734}
+  - {fileID: 1122050830}
   - {fileID: 260231010}
   - {fileID: 80532613}
   - {fileID: 830243577}
