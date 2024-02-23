@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,6 +38,7 @@ public class PauseManager : MonoBehaviour
 
     public void Settings()
     {
+        pauseCanvas.enabled = false;
         settingsManager.OpenMenu();
     }
 

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -42,5 +41,6 @@ public class SettingsManager : MonoBehaviour
     public void CloseMenu()
     {
         settingsCanvas.enabled = false;
+        onClose?.Invoke();
     }
 }
