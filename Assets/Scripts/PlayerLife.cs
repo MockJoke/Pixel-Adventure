@@ -25,21 +25,13 @@ public class PlayerLife : MonoBehaviour
         
         SetHearts();
     }
-    
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Trap"))
-        {
-            Die();
-        }
-    }
 
     public void Die()
     {
+        boxCollider.enabled = false;
         CameraShaker.Instance.ShakeCamera(5f, 0.25f);
         AudioManager.Instance.PlaySound(AudioType.characterDeath);
         animator.SetTrigger(deathAnim);
-        boxCollider.enabled = false;
 
         LoseLife();
     }
