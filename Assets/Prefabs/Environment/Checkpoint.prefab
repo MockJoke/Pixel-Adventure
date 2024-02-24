@@ -166,3 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5462235727107688488}
+  checkpointCollider: {fileID: 1330006294542168173}
