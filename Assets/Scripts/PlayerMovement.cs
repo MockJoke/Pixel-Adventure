@@ -115,4 +115,9 @@ public class PlayerMovement : MonoBehaviour
     {
         dust.Play();
     }
+
+    public void ResetFlipping()
+    {
+        sprite.flipX = false;
+    }
 }     

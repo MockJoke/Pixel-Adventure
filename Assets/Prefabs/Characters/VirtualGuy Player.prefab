@@ -4796,7 +4796,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4908,7 +4908,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5049,6 +5049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeCount: 3
+  playerMovement: {fileID: 7074810212961939107}
   hearts:
   - {fileID: 0}
   - {fileID: 0}
@@ -5056,6 +5057,9 @@ MonoBehaviour:
   rb: {fileID: 7074810212961939105}
   animator: {fileID: 7074810212961939116}
   boxCollider: {fileID: 7074810212961939106}
+  initSpawnPos: {x: 0, y: 0, z: 0}
+  respawnOffset: {x: -2.15, y: 0, z: 0}
+  checkpointManager: {fileID: 0}
 --- !u!114 &7074810212961939117
 MonoBehaviour:
   m_ObjectHideFlags: 0
