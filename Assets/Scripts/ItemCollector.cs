@@ -4,11 +4,12 @@ using UnityEngine.UI;
 public class ItemCollector : MonoBehaviour
 {
     private int cherries = 0;
-    [SerializeField] private int TotalCherries = 5;
+    // [SerializeField] private int TotalCherries = 5;
     [SerializeField] private Text cherriesText;
 
     void Start()
     {
+        cherries = PlayerPrefs.GetInt("Foods", cherries);
         UpdateCherries();
     }
 
@@ -26,6 +27,6 @@ public class ItemCollector : MonoBehaviour
 
     private void UpdateCherries()
     {
-        cherriesText.text = $"{cherries}/{TotalCherries}";
+        cherriesText.text = $"{cherries}";
     }
 }
