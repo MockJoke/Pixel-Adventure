@@ -19,6 +19,7 @@ public class ItemCollector : MonoBehaviour
             AudioManager.Instance.PlaySound(AudioType.itemCollect);
             Destroy(collision.gameObject);
             cherries++;
+            PlayerPrefs.SetInt("Foods", cherries);
             UpdateCherries();
         }
     }
