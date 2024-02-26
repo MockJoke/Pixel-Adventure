@@ -26792,6 +26792,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4413329744241210803, guid: c670a99b6ad8efe439192788e63e20cf, type: 3}
   m_PrefabInstance: {fileID: 1454130000}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499299255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
+  m_PrefabInstance: {fileID: 749281734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879e799fe8885674a8d5eb8073d4164b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1561555051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27225,7 +27236,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3800027
+      value: -1.3800035
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -28150,6 +28161,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameoverCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3708424206013281095, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+      propertyPath: playerLife
+      value: 
+      objectReference: {fileID: 1499299255}
     - target: {fileID: 4386221783212425741, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

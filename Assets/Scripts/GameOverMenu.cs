@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] private Canvas gameOverCanvas;
+    [SerializeField] private PlayerLife playerLife;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class GameOverMenu : MonoBehaviour
     public void StartAgain()
     {
         CloseMenu();
+        playerLife.GiveLife();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

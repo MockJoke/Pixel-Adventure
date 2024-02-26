@@ -56,6 +56,13 @@ public class PlayerLife : MonoBehaviour
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
+    public void GiveLife()
+    {
+        LifeCount++;
+        
+        PlayerPrefs.SetInt("LifeCount", LifeCount);
+    }
+
     private void SetHearts()
     {
         for (int i = 0; i < LifeCount; i++)
