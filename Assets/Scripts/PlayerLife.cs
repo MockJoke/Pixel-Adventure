@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int LifeCount = 3;
-    [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
@@ -12,7 +11,9 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private Vector3 initSpawnPos;
     [SerializeField] private Vector3 respawnOffset;
     
-    [Space]
+    [Header("Manager Refs")]
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private GameOverMenu gameOverMenu;
     [SerializeField] private CheckpointManager checkpointManager;
     
     private static readonly int deathAnim = Animator.StringToHash("death");
@@ -48,7 +49,11 @@ public class PlayerLife : MonoBehaviour
 
     private void LoseLife()
     {
-        LifeCount--;
+        if (LifeCount > 0)
+        {
+            LifeCount--;
+        }
+        
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
@@ -67,14 +72,16 @@ public class PlayerLife : MonoBehaviour
     
     private void CheckLifeStatus()
     {
+        DecreaseHearts();
+        
         if (LifeCount > 0)
         {
             Respawn();
-            DecreaseHearts();
         }
         else
         {
-            SceneManager.LoadScene("Scenes/Game Over Screen");
+            gameOverMenu.OpenMenu();
+            // SceneManager.LoadScene("Scenes/Game Over Screen");
         }
     }
 

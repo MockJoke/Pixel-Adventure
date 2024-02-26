@@ -19,7 +19,6 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            // collision.GetComponent<PlayerLife>().SetLatestCheckpoint(transform);
             GetComponentInParent<CheckpointManager>().SetLatestCheckpoint(transform);
             animator.SetTrigger(onCompleteAnim);
             checkpointCollider.enabled = false;
