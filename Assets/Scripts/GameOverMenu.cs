@@ -37,6 +37,6 @@ public class GameOverMenu : MonoBehaviour
     public void StartAgain()
     {
         CloseMenu();
-        SceneManager.LoadScene(LevelManager.Instance.GetLatestUnlockedLevelNo() + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

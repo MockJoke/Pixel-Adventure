@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -81,7 +80,6 @@ public class PlayerLife : MonoBehaviour
         else
         {
             gameOverMenu.OpenMenu();
-            // SceneManager.LoadScene("Scenes/Game Over Screen");
         }
     }
 
