@@ -13,6 +13,7 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] private Button startAgainBtn;
 
     [Header("Extra Life Panel Fields")] 
+    [SerializeField] private int foodTradeFactor = 3;
     [SerializeField] private TextMeshProUGUI totalLifeCount;
     [SerializeField] private TextMeshProUGUI totalFoodCount;
     [SerializeField] private TextMeshProUGUI buyingLifeCount;
@@ -97,7 +98,7 @@ public class GameOverMenu : MonoBehaviour
     {
         decreaseLifeCountBtn.interactable = currLifeQty > 0;
 
-        if (currLifeQty >= playerLife.maxLifeBound || Math.Abs(currFoodQty) > PlayerPrefs.GetInt("Foods") - 3)
+        if (currLifeQty >= playerLife.maxLifeBound || Math.Abs(currFoodQty) > PlayerPrefs.GetInt("Foods") - foodTradeFactor)
         {
             increaseLifeCountBtn.interactable = false;
         }
