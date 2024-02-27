@@ -331,7 +331,7 @@ PolygonCollider2D:
       - {x: -19.97, y: 13}
       - {x: -19.97, y: -4.55}
       - {x: 79, y: -4.55}
-      - {x: 79, y: -0.13662389}
+      - {x: 79, y: 0}
   m_UseDelaunayMesh: 0
 --- !u!1 &7383620899152253492
 GameObject:
@@ -377,11 +377,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2332156667075870225, guid: aeb617f7055a5a5459c571e31c2b55cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.38
+      value: -1.3800073
       objectReference: {fileID: 0}
     - target: {fileID: 2332156667075870225, guid: aeb617f7055a5a5459c571e31c2b55cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.56
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 2332156667075870225, guid: aeb617f7055a5a5459c571e31c2b55cf, type: 3}
       propertyPath: m_LocalPosition.z
