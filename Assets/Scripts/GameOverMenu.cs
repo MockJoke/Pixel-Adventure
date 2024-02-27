@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -63,6 +64,7 @@ public class GameOverMenu : MonoBehaviour
         extraLifePanel.SetActive(true);
         
         UpdateExtraLifeMenuUI();
+        UpdateQtyBtnInteractivity();
     }
     
     public void CloseExtraLifeMenu()
@@ -78,6 +80,20 @@ public class GameOverMenu : MonoBehaviour
         buyingLifeCount.text = $"{currLifeQty}";
         deductingFoodCount.text = $"{currFoodQty}";
     }
+
+    private void UpdateQtyBtnInteractivity()
+    {
+        decreaseLifeCountBtn.interactable = currLifeQty > 0;
+
+        if (currLifeQty >= playerLife.maxLifeBound || Math.Abs(currFoodQty) > PlayerPrefs.GetInt("Foods") - 3)
+        {
+            increaseLifeCountBtn.interactable = false;
+        }
+        else
+        {
+            increaseLifeCountBtn.interactable = true;
+        }
+    }
     
     public void IncreaseBuyingLifeCount()
     {
@@ -85,6 +101,7 @@ public class GameOverMenu : MonoBehaviour
         currFoodQty -= 3;
         
         UpdateExtraLifeMenuUI();
+        UpdateQtyBtnInteractivity();
     }
     
     public void DecreaseBuyingLifeCount()
@@ -96,5 +113,6 @@ public class GameOverMenu : MonoBehaviour
         currFoodQty += 3;
         
         UpdateExtraLifeMenuUI();
+        UpdateQtyBtnInteractivity();
     }
 }

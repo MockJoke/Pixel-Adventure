@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int LifeCount = 3;
-    [SerializeField] private int maxLifeBound = 100;
+    [SerializeField] public int maxLifeBound = 100;
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
