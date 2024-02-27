@@ -74,5 +74,13 @@ public class LevelManager : Singleton<LevelManager>
     {
         PlayerPrefs.SetInt(level, (int)levelStatus);
     }
+
+    public void ResetLevelProgress()
+    {
+        for (int i = 0; i < Levels.Length; i++)
+        {
+            SetLevelStatus(Levels[i], i == 0 ? LevelStatus.Unlocked : LevelStatus.Locked);
+        }
+    }
 }
 

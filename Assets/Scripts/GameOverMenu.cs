@@ -141,7 +141,7 @@ public class GameOverMenu : MonoBehaviour
         UpdateQtyBtnInteractivity();
     }
 
-    public void ResetQty()
+    private void ResetQty()
     {
         currLifeQty = 0;
         currFoodQty = 0;
