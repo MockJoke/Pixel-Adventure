@@ -27,6 +27,9 @@ public class GameOverMenu : MonoBehaviour
     {
         if (gameOverCanvas == null)
             gameOverCanvas = GetComponent<Canvas>();
+
+        if (playerLife == null)
+            playerLife = FindObjectOfType<PlayerLife>();
     }
 
     public void OpenGameOverMenu()
