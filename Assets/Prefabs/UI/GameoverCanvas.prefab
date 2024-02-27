@@ -2050,6 +2050,7 @@ MonoBehaviour:
   mainPanel: {fileID: 2952585268429802791}
   extraLifePanel: {fileID: 5040153650536284423}
   playerLife: {fileID: 0}
+  startAgainBtn: {fileID: 7234353952666435921}
   totalLifeCount: {fileID: 3498166476899369762}
   totalFoodCount: {fileID: 8592511605834724202}
   buyingLifeCount: {fileID: 6949975781138774819}
@@ -2293,7 +2294,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3708424206013281095}
         m_TargetAssemblyTypeName: GameOverMenu, Assembly-CSharp
-        m_MethodName: StartAgain
+        m_MethodName: GetExtraLives
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

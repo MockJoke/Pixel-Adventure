@@ -10,6 +10,7 @@ public class GameOverMenu : MonoBehaviour
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject extraLifePanel;
     [SerializeField] private PlayerLife playerLife;
+    [SerializeField] private Button startAgainBtn;
 
     [Header("Extra Life Panel Fields")] 
     [SerializeField] private TextMeshProUGUI totalLifeCount;
@@ -28,16 +29,23 @@ public class GameOverMenu : MonoBehaviour
             gameOverCanvas = GetComponent<Canvas>();
     }
 
-    public void OpenMenu()
+    public void OpenGameOverMenu()
     {
         gameOverCanvas.enabled = true;
         SetTimeScale(false);
+
+        SetStartAgainBtn();
     }
     
-    public void CloseMenu()
+    public void CloseGameOverMenu()
     {
         gameOverCanvas.enabled = false;
         SetTimeScale(true);
+    }
+
+    private void SetStartAgainBtn()
+    {
+        startAgainBtn.gameObject.SetActive(PlayerPrefs.GetInt("LifeCount") > 0);
     }
     
     private void SetTimeScale(bool reset)
@@ -47,14 +55,13 @@ public class GameOverMenu : MonoBehaviour
     
     public void Home()
     {
-        CloseMenu();
+        CloseGameOverMenu();
         SceneManager.LoadScene("Scenes/Start Screen");
     }
     
     public void StartAgain()
     {
-        CloseMenu();
-        playerLife.GiveLife(1);
+        CloseGameOverMenu();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -71,6 +78,8 @@ public class GameOverMenu : MonoBehaviour
     {
         extraLifePanel.SetActive(false);
         mainPanel.SetActive(true);
+        
+        SetStartAgainBtn();
     }
 
     private void UpdateExtraLifeMenuUI()
@@ -114,5 +123,24 @@ public class GameOverMenu : MonoBehaviour
         
         UpdateExtraLifeMenuUI();
         UpdateQtyBtnInteractivity();
+    }
+
+    public void GetExtraLives()
+    {
+        playerLife.GiveLife(currLifeQty);
+        
+        int currFoodCount = PlayerPrefs.GetInt("Foods");
+        PlayerPrefs.SetInt("Foods", currFoodCount - Math.Abs(currFoodQty));
+        
+        ResetQty();
+        
+        UpdateExtraLifeMenuUI();
+        UpdateQtyBtnInteractivity();
+    }
+
+    public void ResetQty()
+    {
+        currLifeQty = 0;
+        currFoodQty = 0;
     }
 }

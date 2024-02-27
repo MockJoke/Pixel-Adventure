@@ -90,7 +90,7 @@ public class PlayerLife : MonoBehaviour
         }
         else
         {
-            gameOverMenu.OpenMenu();
+            gameOverMenu.OpenGameOverMenu();
         }
     }
 
