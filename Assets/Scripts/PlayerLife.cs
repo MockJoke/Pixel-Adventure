@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private int LifeCount = 3;
+    [SerializeField] private int maxLifeBound = 100;
     [SerializeField] private GameObject[] hearts;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
@@ -56,9 +57,12 @@ public class PlayerLife : MonoBehaviour
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
-    public void GiveLife()
+    public void GiveLife(int count = 1)
     {
-        LifeCount++;
+        if (LifeCount < maxLifeBound)
+        {
+            LifeCount += count;
+        }
         
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
