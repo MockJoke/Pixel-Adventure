@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EndScreenMenu : MonoBehaviour
+public class RestartJourneyConfirmationMenu : MonoBehaviour
 {
     [SerializeField] private Canvas confirmationCanvas;
 
@@ -17,6 +17,8 @@ public class EndScreenMenu : MonoBehaviour
         
         PlayerPrefs.SetInt("LifeCount", 3);
         PlayerPrefs.SetInt("Foods", 0);
+
+        Time.timeScale = 1;
     }
 
     public void OnReject()
