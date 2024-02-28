@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class WaypointFollower : MonoBehaviour
 {
-    public Transform[] waypoints;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private float closingDistance = 0.1f;
     private int currWaypointIndex = 0;
-    public float closingDistance = 0.1f;
 
     public float speed = 2f;
 

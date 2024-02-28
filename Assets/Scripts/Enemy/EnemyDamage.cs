@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private Collider2D enemyCollider;
     private static readonly int dieAnim = Animator.StringToHash("Die");

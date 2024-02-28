@@ -1,11 +1,11 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
     private int cherries = 0;
     // [SerializeField] private int TotalCherries = 5;
-    [SerializeField] private Text cherriesText;
+    [SerializeField] private TextMeshProUGUI cherriesText;
 
     void Start()
     {

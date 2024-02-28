@@ -4,16 +4,16 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
-
     [SerializeField] private BoxCollider2D playerCollider;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private ParticleSystem dust;
-
+    
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private LayerMask groundLayer;
+    
     private float dirX = 0f;
     private static readonly int animState = Animator.StringToHash("state");
 

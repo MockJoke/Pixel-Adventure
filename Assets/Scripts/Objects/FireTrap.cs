@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireTrap : MonoBehaviour
 {
-    [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRend;
     
@@ -27,11 +24,11 @@ public class FireTrap : MonoBehaviour
             spriteRend = GetComponent<SpriteRenderer>();
     }
 
-    void Update()
-    {
-        // if (playerLife != null && active)
-        //     playerLife.Die();
-    }
+    // void Update()
+    // {
+    //     if (playerLife != null && active)
+    //         playerLife.Die();
+    // }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

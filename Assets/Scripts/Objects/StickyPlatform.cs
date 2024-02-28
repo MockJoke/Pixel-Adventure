@@ -4,7 +4,7 @@ public class StickyPlatform : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.SetParent(transform);
         }
@@ -12,7 +12,7 @@ public class StickyPlatform : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.SetParent(null);
         }

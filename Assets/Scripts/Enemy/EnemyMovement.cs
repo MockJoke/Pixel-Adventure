@@ -12,14 +12,13 @@ public class EnemyMovement : MonoBehaviour
     
     [Header("Movement parameters")]
     [SerializeField] private float speed = 2f;
-    private Vector3 initScale;
     [SerializeField] private int defaultSpriteFacing = -1;
     [SerializeField] private bool isRangedEnemy = false;
     [SerializeField] private Transform bulletsHolder;
-    private bool movingLeft = true;
-    
-    [Header("Idle Behaviour")]
     [SerializeField] private float idleDuration = 1f;
+    
+    private Vector3 initScale;
+    private bool movingLeft = true;
     private float idleTimer;
     
     private static readonly int movingAnim = Animator.StringToHash("Moving");

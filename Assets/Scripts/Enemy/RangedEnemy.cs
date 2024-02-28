@@ -10,16 +10,12 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
     [SerializeField] private int damage;
-
-    [Header("Ranged Attack")]
     [SerializeField] private Transform bulletPoint;
     [SerializeField] private GameObject[] bullets;
 
     [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
-
-    [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
     
     private float cooldownTimer = Mathf.Infinity;

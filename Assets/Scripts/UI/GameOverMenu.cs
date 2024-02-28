@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
+    [Header("Main Panel Fields")]
     [SerializeField] private Canvas gameOverCanvas;
     [SerializeField] private GameObject mainPanel;
-    [SerializeField] private GameObject extraLifePanel;
-    [SerializeField] private PlayerLife playerLife;
     [SerializeField] private Button startAgainBtn;
+    [SerializeField] private PlayerLife playerLife;
 
     [Header("Extra Life Panel Fields")] 
+    [SerializeField] private GameObject extraLifePanel;
     [SerializeField] private int foodTradeFactor = 3;
     [SerializeField] private TextMeshProUGUI totalLifeCount;
     [SerializeField] private TextMeshProUGUI totalFoodCount;
