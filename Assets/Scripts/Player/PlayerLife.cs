@@ -1,13 +1,20 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    [SerializeField] private int LifeCount = 3;
-    [SerializeField] public int maxLifeBound = 100;
-    [SerializeField] private GameObject[] hearts;
+    [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D boxCollider;
+    
+    [Header("Life counts")]
+    [SerializeField] private int LifeCount = 3;
+    public int maxLifeBound = 100;
+    [SerializeField] private TextMeshProUGUI heartsCount;
+    [SerializeField] private GameObject[] hearts;
+    
+    [Header("Respawn Fields")]
     [SerializeField] private Vector3 initSpawnPos;
     [SerializeField] private Vector3 respawnOffset;
     
@@ -34,7 +41,8 @@ public class PlayerLife : MonoBehaviour
 
         LifeCount = PlayerPrefs.GetInt("LifeCount", 3);
         
-        SetHearts();
+        // SetHearts();
+        UpdateHeartsCountsUI();
     }
 
     public void Die()
@@ -67,22 +75,28 @@ public class PlayerLife : MonoBehaviour
         PlayerPrefs.SetInt("LifeCount", LifeCount);
     }
 
-    private void SetHearts()
-    {
-        for (int i = 0; i < LifeCount; i++)
-        {
-            hearts[i].SetActive(true);
-        }
-    }
+    // private void SetHearts()
+    // {
+    //     for (int i = 0; i < LifeCount; i++)
+    //     {
+    //         hearts[i].SetActive(true);
+    //     }
+    // }
 
-    private void DecreaseHearts()
+    // private void DecreaseHearts()
+    // {
+    //     hearts[LifeCount].SetActive(false);
+    // }
+
+    private void UpdateHeartsCountsUI()
     {
-        hearts[LifeCount].SetActive(false);
+        heartsCount.text = $"{LifeCount}";
     }
     
     private void CheckLifeStatus()
     {
-        DecreaseHearts();
+        // DecreaseHearts();
+        UpdateHeartsCountsUI();
         
         if (LifeCount > 0)
         {
