@@ -47,7 +47,8 @@ public class RangedEnemy : MonoBehaviour
         if (enemyMovement != null)
             enemyMovement.enabled = !PlayerInSight();
     }
-
+    
+    [ContextMenu("Fire")]
     private void RangedAttack()
     {
         // AudioManager.Instance.PlaySound(fireballSound);
