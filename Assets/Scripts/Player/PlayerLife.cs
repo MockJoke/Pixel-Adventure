@@ -12,7 +12,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private int LifeCount = 3;
     public int maxLifeBound = 100;
     [SerializeField] private TextMeshProUGUI heartsCount;
-    [SerializeField] private GameObject[] hearts;
+    // [SerializeField] private GameObject[] hearts;
     
     [Header("Respawn Fields")]
     [SerializeField] private Vector3 initSpawnPos;

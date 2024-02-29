@@ -78,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -443938715, guid: 23ce1e97743787a40989573bf2b72121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -202,6 +202,7 @@ MonoBehaviour:
   rightEdge: {fileID: 0}
   speed: 2
   defaultSpriteFacing: -1
+  isRangedEnemy: 1
   bulletsHolder: {fileID: 0}
   idleDuration: 1
 --- !u!114 &7434866133206311124
