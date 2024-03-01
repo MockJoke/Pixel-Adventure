@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4b1930a4515354f9816a444fe39aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 2042507213234548713}
   confetti: {fileID: 8001201876116441956}
 --- !u!1 &8001201876116441956
 GameObject:
