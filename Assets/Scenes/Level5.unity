@@ -41631,7 +41631,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1099983
+      value: 0.10998871
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -41747,63 +41747,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58ee50092a6bca74a9a9cf3960f41d57, type: 3}
---- !u!1001 &7015393793220550258
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 49.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2096438736424473011, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2905971308204679423, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
-      propertyPath: m_Name
-      value: SpikedBallTrap
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6bfff79e9393b4d44ad325bb94e25db7, type: 3}
 --- !u!1001 &7113168362699228028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42025,7 +41968,6 @@ SceneRoots:
   - {fileID: 260231010}
   - {fileID: 1435743382}
   - {fileID: 1710138679}
-  - {fileID: 7015393793220550258}
   - {fileID: 969653154985438038}
   - {fileID: 774908050}
   - {fileID: 869594268}

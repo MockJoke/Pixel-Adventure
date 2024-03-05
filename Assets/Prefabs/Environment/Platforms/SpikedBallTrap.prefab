@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7966670471801494949}
   - component: {fileID: 8665630396167236479}
   - component: {fileID: 2141534629991217655}
+  - component: {fileID: 7388341696123939184}
   m_Layer: 0
   m_Name: Chain
   m_TagString: Untagged
@@ -125,6 +126,21 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &7388341696123939184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887609222420794030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8e53cf3f061957439778f4dc09e33ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+  leftAngle: -90
+  rightAngle: 90
 --- !u!1 &7567138134262183501
 GameObject:
   m_ObjectHideFlags: 0
