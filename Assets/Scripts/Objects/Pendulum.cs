@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Pendulum : MonoBehaviour
@@ -78,22 +79,63 @@ public class Pendulum : MonoBehaviour
 
         rb2d.MoveRotation(angle);
     }
-        {
-            movingClockwise = true;
-        }
-    }
-
-    private void Move()
+    
+    private void OnDrawGizmos()
     {
-        ChangeMoveDir();
+        Gizmos.color = Color.blue;
 
-        if (movingClockwise)
+        float radius = Math.Abs(plank.position.y - ball.position.y);
+        
+        if (closedLoop)
         {
-            rb2d.angularVelocity = moveSpeed;
+            // Draw a full circle
+            DrawCircle(transform.position, radius);
         }
         else
         {
-            rb2d.angularVelocity = -1 * moveSpeed;
+            // Draw arc based on angle limits
+            float arcStart = leftAngle;
+            float arcEnd = rightAngle;
+
+            // Draw arc from leftAngle to rightAngle
+            DrawArc(transform.position, radius, arcStart, arcEnd, 0.1f);
+        }
+    }
+
+    private void DrawCircle(Vector3 center, float radius)
+    {
+        float theta = 0;
+        float x = radius * Mathf.Cos(theta);
+        float y = radius * Mathf.Sin(theta);
+        Vector3 previous = center + new Vector3(x, y, 0);
+
+        for (int i = 1; i <= 360; i++)
+        {
+            theta = Mathf.Deg2Rad * i;
+            x = radius * Mathf.Cos(theta);
+            y = radius * Mathf.Sin(theta);
+            Vector3 next = center + new Vector3(x, y, 0);
+            Gizmos.DrawLine(previous, next);
+            previous = next;
+        }
+    }
+
+    private void DrawArc(Vector3 center, float radius, float startAngle, float endAngle, float step)
+    {
+        Quaternion pendulumRotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
+
+        Vector3 startPoint = Quaternion.Euler(0, 0, startAngle) * Vector3.down * radius;
+        startPoint = center + pendulumRotation * startPoint;
+
+        Vector3 previous = startPoint;
+
+        for (float theta = startAngle + step; theta <= endAngle; theta += step)
+        {
+            Vector3 nextPoint = Quaternion.Euler(0, 0, theta) * Vector3.down * radius;
+            nextPoint = center + pendulumRotation * nextPoint;
+
+            Gizmos.DrawLine(previous, nextPoint);
+            previous = nextPoint;
         }
     }
 }
