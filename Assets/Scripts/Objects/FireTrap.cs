@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FireTrap : MonoBehaviour
+public class FireTrap : Trap
 {
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRend;
@@ -15,14 +15,14 @@ public class FireTrap : MonoBehaviour
     // private PlayerLife playerLife;
     // private static readonly int activatedAnim = Animator.StringToHash("Activated");
 
-    void Awake()
-    {
-        if (animator == null)
-            animator = GetComponent<Animator>();
-        
-        if (spriteRend == null)
-            spriteRend = GetComponent<SpriteRenderer>();
-    }
+    // void Awake()
+    // {
+    //     if (animator == null)
+    //         animator = GetComponent<Animator>();
+    //     
+    //     if (spriteRend == null)
+    //         spriteRend = GetComponent<SpriteRenderer>();
+    // }
 
     // void Update()
     // {
@@ -30,17 +30,17 @@ public class FireTrap : MonoBehaviour
     //         playerLife.Die();
     // }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            // if (!triggered)
-            //     StartCoroutine(ActivateFiretrap());
-            //
-            // if (active)
-                collision.GetComponent<PlayerLife>().Die();
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Player"))
+    //     {
+    //         // if (!triggered)
+    //         //     StartCoroutine(ActivateFiretrap());
+    //         //
+    //         // if (active)
+    //             collision.GetComponent<PlayerLife>().Die();
+    //     }
+    // }
     
     // private IEnumerator ActivateFiretrap()
     // {
