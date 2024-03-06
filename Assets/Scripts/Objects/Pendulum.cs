@@ -4,20 +4,40 @@ public class Pendulum : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb2d;
+    [SerializeField] private Transform plank;
+    [SerializeField] private Transform ball;
     
     [Header("Movement Parameters")]
+    [SerializeField] private bool closedLoop = true;
+    [SerializeField] private RotationDirection rotationDirection = RotationDirection.clockwise;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float leftAngle;
     [SerializeField] private float rightAngle;
-
-    private bool movingClockwise;
+    
+    private bool movingClockwise = true;
+    private float angle;
+    private float direction = -1;    // -1 for clockwise, 1 for counter-clockwise
     
     void Start()
     {
         if (rb2d == null)
             rb2d = GetComponent<Rigidbody2D>();
-        
-        movingClockwise = true;
+
+        switch (rotationDirection)
+        {
+            case RotationDirection.clockwise:
+                movingClockwise = true;
+                direction = -1;
+                break;
+            case RotationDirection.anticlockwise:
+                movingClockwise = false;
+                direction = 1;
+                break;
+            default:
+                movingClockwise = true;
+                direction = -1;
+                break;
+        }
     }
 
     void Update()
@@ -25,13 +45,39 @@ public class Pendulum : MonoBehaviour
         Move();
     }
 
-    private void ChangeMoveDir()
+    private void ChangeDir()
     {
-        if (transform.rotation.z > rightAngle)
+        movingClockwise = !movingClockwise;
+        
+        direction *= -1;
+    }
+
+    private void Move()
+    {
+        angle += moveSpeed * direction * Time.deltaTime;
+
+        if (!closedLoop)
         {
-            movingClockwise = false;
+            if (movingClockwise)
+            {
+                if (angle < leftAngle)
+                {
+                    angle = leftAngle;
+                    ChangeDir();
+                }
+            }
+            else
+            {
+                if (angle > rightAngle)
+                {
+                    angle = rightAngle;
+                    ChangeDir();
+                }
+            }
         }
-        else if (transform.rotation.z < leftAngle)
+
+        rb2d.MoveRotation(angle);
+    }
         {
             movingClockwise = true;
         }
