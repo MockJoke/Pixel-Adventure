@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2096438736424473011}
   m_Layer: 0
-  m_Name: SpikedBallTrap
-  m_TagString: Untagged
+  m_Name: Pendulum
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3887609222420794030}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -117,7 +117,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.033, y: 0}
-  m_ConnectedAnchor: {x: 49.743004, y: 5.41}
+  m_ConnectedAnchor: {x: 49.583004, y: 5.935505}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -138,7 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e53cf3f061957439778f4dc09e33ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  rb2d: {fileID: 8665630396167236479}
+  plank: {fileID: 3933990663491663427}
+  ball: {fileID: 6163890752091701180}
+  closedLoop: 0
+  rotationDirection: 1
+  moveSpeed: 45
   leftAngle: -90
   rightAngle: 90
 --- !u!1 &7567138134262183501
@@ -277,6 +282,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5774370779085537892, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -401,6 +410,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5774370779085537892, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -461,6 +474,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698342494759247854, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774370779085537892, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -525,10 +542,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spiked Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 4012608287631890505, guid: 5ad3bdc3bf4ac51499cabe2893286cf2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -591,6 +604,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5774370779085537892, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -651,6 +668,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2698342494759247854, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5774370779085537892, guid: 419b4c34bfeb08645a51654c3e9faaf3, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
