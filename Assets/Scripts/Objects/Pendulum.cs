@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class Pendulum : MonoBehaviour
@@ -16,14 +17,25 @@ public class Pendulum : MonoBehaviour
     [SerializeField] private float rightAngle;
     
     private bool movingClockwise = true;
-    private float angle;
     private float direction = -1;    // -1 for clockwise, 1 for counter-clockwise
     
-    void Start()
+    private float angle;
+    private float radius;
+    
+    private Vector3 initPos;
+    private Quaternion initRot;
+    
+    void Awake()
     {
         if (rb2d == null)
             rb2d = GetComponent<Rigidbody2D>();
+    }
 
+    void Start()
+    {
+        initPos = transform.position;
+        initRot = transform.rotation;
+        
         switch (rotationDirection)
         {
             case RotationDirection.clockwise:
@@ -84,12 +96,15 @@ public class Pendulum : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        float radius = Math.Abs(plank.position.y - ball.position.y);
+        radius = Vector3.Distance(plank.position, ball.position);
+
+        Vector3 center = EditorApplication.isPlaying ? initPos : transform.position;
+        Quaternion rot = EditorApplication.isPlaying ? initRot : transform.rotation;
         
         if (closedLoop)
         {
             // Draw a full circle
-            DrawCircle(transform.position, radius);
+            DrawCircle(center, radius);
         }
         else
         {
@@ -98,40 +113,40 @@ public class Pendulum : MonoBehaviour
             float arcEnd = rightAngle;
 
             // Draw arc from leftAngle to rightAngle
-            DrawArc(transform.position, radius, arcStart, arcEnd, 0.1f);
+            DrawArc(center, rot,  radius, arcStart, arcEnd, 0.1f);
         }
     }
 
-    private void DrawCircle(Vector3 center, float radius)
+    private void DrawCircle(Vector3 center, float r)
     {
         float theta = 0;
-        float x = radius * Mathf.Cos(theta);
-        float y = radius * Mathf.Sin(theta);
+        float x = r * Mathf.Cos(theta);
+        float y = r * Mathf.Sin(theta);
         Vector3 previous = center + new Vector3(x, y, 0);
 
         for (int i = 1; i <= 360; i++)
         {
             theta = Mathf.Deg2Rad * i;
-            x = radius * Mathf.Cos(theta);
-            y = radius * Mathf.Sin(theta);
+            x = r * Mathf.Cos(theta);
+            y = r * Mathf.Sin(theta);
             Vector3 next = center + new Vector3(x, y, 0);
             Gizmos.DrawLine(previous, next);
             previous = next;
         }
     }
 
-    private void DrawArc(Vector3 center, float radius, float startAngle, float endAngle, float step)
+    private void DrawArc(Vector3 center, Quaternion rot, float r, float startAngle, float endAngle, float step)
     {
-        Quaternion pendulumRotation = Quaternion.Euler(0, 0, transform.eulerAngles.z);
+        Quaternion pendulumRotation = Quaternion.Euler(0, 0, rot.eulerAngles.z);
 
-        Vector3 startPoint = Quaternion.Euler(0, 0, startAngle) * Vector3.down * radius;
+        Vector3 startPoint = Quaternion.Euler(0, 0, startAngle) * Vector3.down * r;
         startPoint = center + pendulumRotation * startPoint;
 
         Vector3 previous = startPoint;
 
         for (float theta = startAngle + step; theta <= endAngle; theta += step)
         {
-            Vector3 nextPoint = Quaternion.Euler(0, 0, theta) * Vector3.down * radius;
+            Vector3 nextPoint = Quaternion.Euler(0, 0, theta) * Vector3.down * r;
             nextPoint = center + pendulumRotation * nextPoint;
 
             Gizmos.DrawLine(previous, nextPoint);
