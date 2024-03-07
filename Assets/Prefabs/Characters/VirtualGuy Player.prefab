@@ -5030,12 +5030,12 @@ MonoBehaviour:
   playerCollider: {fileID: 7074810212961939106}
   sprite: {fileID: 7074810212961939111}
   animator: {fileID: 7074810212961939116}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   dust: {fileID: 4988972175772220614}
   moveSpeed: 7
   jumpForce: 14
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &7074810212961939118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5048,17 +5048,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879e799fe8885674a8d5eb8073d4164b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCount: 3
-  playerMovement: {fileID: 7074810212961939107}
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   rb: {fileID: 7074810212961939105}
   animator: {fileID: 7074810212961939116}
   boxCollider: {fileID: 7074810212961939106}
-  initSpawnPos: {x: 0, y: 0, z: 0}
-  respawnOffset: {x: -2.15, y: 0, z: 0}
+  LifeCount: 3
+  maxLifeBound: 100
+  heartsCount: {fileID: 0}
+  initSpawnPos: {x: 0.14, y: 0.56, z: 0}
+  respawnOffset: {x: 0, y: 0, z: 0}
+  playerMovement: {fileID: 7074810212961939107}
+  gameOverMenu: {fileID: 0}
   checkpointManager: {fileID: 0}
 --- !u!114 &7074810212961939117
 MonoBehaviour:
@@ -5072,5 +5071,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b762de6b28c8747967e9a72ca4f85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalCherries: 4
   cherriesText: {fileID: 0}
