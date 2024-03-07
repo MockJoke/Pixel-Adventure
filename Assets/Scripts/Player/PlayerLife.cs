@@ -110,6 +110,9 @@ public class PlayerLife : MonoBehaviour
 
     private void Respawn()
     {
+        boxCollider.enabled = true;
+        playerMovement.ResetFlipping();
+        
         if (checkpointManager.hasPassedAnyCheckPoints())
         {
             Vector3 pos = checkpointManager.GetLatestCheckPoint().position;
@@ -119,8 +122,5 @@ public class PlayerLife : MonoBehaviour
         {
             transform.position = initSpawnPos;
         }
-        
-        boxCollider.enabled = true;
-        playerMovement.ResetFlipping();
     }
 }
