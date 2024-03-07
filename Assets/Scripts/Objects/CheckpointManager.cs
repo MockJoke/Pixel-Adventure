@@ -30,4 +30,10 @@ public class CheckpointManager : MonoBehaviour
     {
         return latestCheckpointIndex > 0;
     }
+
+    public void ClearCheckpoints()
+    {
+        latestCheckpointIndex = 0;
+        PlayerPrefs.SetInt("LatestCheckpointIndex", latestCheckpointIndex);
+    }
 }

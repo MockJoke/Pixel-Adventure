@@ -1401,7 +1401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939104, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.56
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939104, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1461,7 +1461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: initSpawnPos.y
-      value: 0.56
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: checkpointManager
@@ -6752,7 +6752,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3800162
+      value: -1.3800132
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31681,6 +31681,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8071217704389422081, guid: 58ee50092a6bca74a9a9cf3960f41d57, type: 3}
+      propertyPath: checkpointManager
+      value: 
+      objectReference: {fileID: 1346794541}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -5552,7 +5552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939104, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.56
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939104, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5612,11 +5612,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: initSpawnPos.y
-      value: 0.56
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: respawnOffset.x
-      value: -0.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7074810212961939118, guid: 0cc793c5610de314e9a3e2ade3e8d937, type: 3}
       propertyPath: checkpointManager
@@ -41609,6 +41609,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.11
       objectReference: {fileID: 0}
+    - target: {fileID: 2744102320082710090, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3328116258638485485, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
       value: 100
@@ -41631,7 +41635,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.10998871
+      value: 0.10999675
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -41742,6 +41746,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8071217704389422081, guid: 58ee50092a6bca74a9a9cf3960f41d57, type: 3}
+      propertyPath: checkpointManager
+      value: 
+      objectReference: {fileID: 1710138678}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
