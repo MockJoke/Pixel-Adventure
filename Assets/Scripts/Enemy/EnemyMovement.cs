@@ -16,6 +16,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private bool isRangedEnemy = false;
     [SerializeField] private Transform bulletsHolder;
     [SerializeField] private float idleDuration = 1f;
+    [SerializeField] private MovementDirection initMoveDir = MovementDirection.left;
     
     private Vector3 initScale;
     private bool movingLeft = true;
@@ -36,7 +37,12 @@ public class EnemyMovement : MonoBehaviour
 
     void Start()
     {
-        movingLeft = defaultSpriteFacing == -1;
+        movingLeft = initMoveDir switch
+        {
+            MovementDirection.left => true,
+            MovementDirection.right => false,
+            _ => true
+        };
     }
 
     private void OnDisable()
