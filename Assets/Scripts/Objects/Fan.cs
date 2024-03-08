@@ -3,18 +3,10 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    private enum Direction
-    {
-        up,
-        down,
-        left,
-        right
-    }
-    
     [SerializeField] private float initForce = 10f;
     [SerializeField] private float maxForce = 20f;
     [SerializeField] private float forceIncreaseRate = 5f;
-    [SerializeField] private Direction facingDirection = Direction.up;
+    [SerializeField] private MovementDirection facingDirection = MovementDirection.up;
 
     private Rigidbody2D playerRb;
     private float currForce = 0f;
@@ -56,13 +48,13 @@ public class Fan : MonoBehaviour
     {
         switch (facingDirection)
         {
-            case Direction.up:
+            case MovementDirection.up:
                 return transform.up;
-            case Direction.down:
+            case MovementDirection.down:
                 return -transform.up;
-            case Direction.left:
+            case MovementDirection.left:
                 return -transform.right;
-            case Direction.right:
+            case MovementDirection.right:
                 return transform.right;
             default:
                 return Vector3.zero;
