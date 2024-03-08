@@ -4,6 +4,7 @@ public class Trampoline : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float jumpForce = 20f;
+    
     private static readonly int activatedAnim = Animator.StringToHash("Activated");
 
     void Awake()

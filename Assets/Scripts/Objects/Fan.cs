@@ -1,27 +1,71 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    // [SerializeField] private Animator animator;
-    [SerializeField] private float force = 20f;
-    private static readonly int activatedAnim = Animator.StringToHash("Activated");
-
-    void Awake()
+    private enum Direction
     {
-        // if (animator == null)
-        //     animator = GetComponent<Animator>();
+        up,
+        down,
+        left,
+        right
+    }
+    
+    [SerializeField] private float initForce = 10f;
+    [SerializeField] private float maxForce = 20f;
+    [SerializeField] private float forceIncreaseRate = 5f;
+    [SerializeField] private Direction facingDirection = Direction.up;
+
+    private Rigidbody2D playerRb;
+    private float currForce = 0f;
+    
+    void FixedUpdate()
+    {
+        if (playerRb != null)
+        {
+            Vector3 forceDir = GetForceDir();
+            
+            playerRb.AddForce(forceDir.normalized * currForce, ForceMode2D.Force);
+
+            if (currForce < maxForce)
+            {
+                currForce += forceIncreaseRate * Time.fixedDeltaTime;
+            }
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // animator.SetTrigger(activatedAnim);
-            
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * force, ForceMode2D.Impulse);
+            playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+            currForce = initForce;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerRb = null;
+            currForce = initForce;
+        }
+    }
+
+    private Vector3 GetForceDir()
+    {
+        switch (facingDirection)
+        {
+            case Direction.up:
+                return transform.up;
+            case Direction.down:
+                return -transform.up;
+            case Direction.left:
+                return -transform.right;
+            case Direction.right:
+                return transform.right;
+            default:
+                return Vector3.zero;
         }
     }
 }
