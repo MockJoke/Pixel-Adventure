@@ -278,4 +278,4 @@ MonoBehaviour:
   initForce: 125
   maxForce: 200
   forceIncreaseRate: 5
-  facingDirection: 0
+  facingDirection: 1

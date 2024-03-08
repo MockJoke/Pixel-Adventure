@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 437825509473004573}
   - component: {fileID: 7434866133206311124}
   - component: {fileID: 6713333332134415950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trunk
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
   isRangedEnemy: 1
   bulletsHolder: {fileID: 0}
   idleDuration: 1
+  initMoveDir: 3
 --- !u!114 &7434866133206311124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4149918935549747550}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 3306451490063965843, guid: 0000000000000000d000000000000000, type: 0}

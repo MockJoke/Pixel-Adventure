@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4192896800767624807}
   - component: {fileID: 1738363706891292792}
   - component: {fileID: 8502205729162561971}
-  m_Layer: 0
-  m_Name: Bullet
+  m_Layer: 8
+  m_Name: Trunk Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 746f19cb1a48f1c43b55e6b9e475d199, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
