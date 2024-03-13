@@ -1,4 +1,3 @@
-using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -15,6 +14,7 @@ public class Pendulum : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float leftAngle;
     [SerializeField] private float rightAngle;
+    [SerializeField] private Quaternion defaultRot = Quaternion.Euler(0, 0, 0);
     
     private bool movingClockwise = true;
     private float direction = -1;    // -1 for clockwise, 1 for counter-clockwise
@@ -23,7 +23,6 @@ public class Pendulum : MonoBehaviour
     private float radius;
     
     private Vector3 initPos;
-    private Quaternion initRot;
     
     void Awake()
     {
@@ -34,7 +33,7 @@ public class Pendulum : MonoBehaviour
     void Start()
     {
         initPos = transform.position;
-        initRot = transform.rotation;
+        angle = GetObjectRotation();
         
         switch (rotationDirection)
         {
@@ -52,7 +51,19 @@ public class Pendulum : MonoBehaviour
                 break;
         }
     }
-
+    
+    private float GetObjectRotation()
+    {
+        if(transform.eulerAngles.z > 180)
+        {
+            return transform.eulerAngles.z - 360;
+        }
+        else
+        {
+            return transform.eulerAngles.z;
+        }
+    }
+    
     void Update()
     {
         Move();
@@ -99,7 +110,6 @@ public class Pendulum : MonoBehaviour
         radius = Vector3.Distance(plank.position, ball.position);
 
         Vector3 center = EditorApplication.isPlaying ? initPos : transform.position;
-        Quaternion rot = EditorApplication.isPlaying ? initRot : transform.rotation;
         
         if (closedLoop)
         {
@@ -113,7 +123,7 @@ public class Pendulum : MonoBehaviour
             float arcEnd = rightAngle;
 
             // Draw arc from leftAngle to rightAngle
-            DrawArc(center, rot,  radius, arcStart, arcEnd, 0.1f);
+            DrawArc(center, defaultRot,  radius, arcStart, arcEnd, 0.1f);
         }
     }
 
