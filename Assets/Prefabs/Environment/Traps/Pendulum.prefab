@@ -117,7 +117,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.033, y: 0}
-  m_ConnectedAnchor: {x: 49.583004, y: 5.935505}
+  m_ConnectedAnchor: {x: 30.792767, y: 8.6706085}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -143,9 +143,10 @@ MonoBehaviour:
   ball: {fileID: 6163890752091701180}
   closedLoop: 0
   rotationDirection: 1
-  moveSpeed: 45
+  moveSpeed: 60
   leftAngle: -90
   rightAngle: 90
+  defaultRot: {x: 0, y: 0, z: 0, w: 1}
 --- !u!1 &7567138134262183501
 GameObject:
   m_ObjectHideFlags: 0
