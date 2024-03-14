@@ -39,7 +39,7 @@ public class EnemyDamage : MonoBehaviour
         return Vector2.Dot(direction.normalized, testDirection) > 0.25f;
     }
 
-    private void Die()
+    public void Die()
     {
         animator.SetTrigger(dieAnim);
         enemyCollider.enabled = false;
