@@ -6,6 +6,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private Canvas HomeCanvas;
     [SerializeField] private Canvas LevelsCanvas;
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private CharacterSelectionMenu characterSelectionMenu;
     [SerializeField] private TextMeshProUGUI startBtnText;
     
     void Awake()
@@ -44,5 +45,11 @@ public class StartMenu : MonoBehaviour
     {
         CloseHomeMenu();
         settingsManager.OpenMenu();
+    }
+
+    public void OpenCharSelectionMenu()
+    {
+        CloseHomeMenu();
+        characterSelectionMenu.OpenMenu();
     }
 }

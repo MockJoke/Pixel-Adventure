@@ -10,7 +10,7 @@ public class SettingsManager : MonoBehaviour
     [Space]
     [SerializeField] private UnityEvent onClose;
     
-    private void Awake()
+    void Awake()
     {
         if (settingsCanvas == null)
             settingsCanvas = GetComponent<Canvas>();
