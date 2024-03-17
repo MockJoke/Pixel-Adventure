@@ -39,6 +39,12 @@ public class PlayerLife : MonoBehaviour
         if (playerMovement == null)
             playerMovement = GetComponent<PlayerMovement>();
 
+        if (gameOverMenu == null)
+            gameOverMenu = FindObjectOfType<GameOverMenu>();
+
+        if (checkpointManager == null)
+            checkpointManager = FindObjectOfType<CheckpointManager>();
+
         LifeCount = PlayerPrefs.GetInt("LifeCount", 3);
         
         // SetHearts();
