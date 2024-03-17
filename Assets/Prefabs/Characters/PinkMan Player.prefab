@@ -4796,7 +4796,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 1757571510742437348}
   - component: {fileID: 1979421188995628501}
   - component: {fileID: 5153679299162906749}
+  - component: {fileID: 9157193603709516101}
   m_Layer: 7
   m_Name: PinkMan Player
   m_TagString: Player
@@ -4908,7 +4909,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1321730127
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5030,12 +5031,12 @@ MonoBehaviour:
   playerCollider: {fileID: 1151095435703016510}
   sprite: {fileID: 5028698731244766671}
   animator: {fileID: 2622317171292227002}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   dust: {fileID: 902265120945701154}
   moveSpeed: 7
   jumpForce: 14
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &1979421188995628501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5048,14 +5049,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 879e799fe8885674a8d5eb8073d4164b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LifeCount: 3
-  hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   rb: {fileID: 4149460126305036926}
   animator: {fileID: 2622317171292227002}
   boxCollider: {fileID: 1151095435703016510}
+  LifeCount: 3
+  maxLifeBound: 100
+  heartsCount: {fileID: 0}
+  initSpawnPos: {x: 0, y: 0, z: 0}
+  respawnOffset: {x: 0, y: 0, z: 0}
+  playerMovement: {fileID: 0}
+  gameOverMenu: {fileID: 0}
+  checkpointManager: {fileID: 0}
 --- !u!114 &5153679299162906749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5068,5 +5072,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b762de6b28c8747967e9a72ca4f85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TotalCherries: 4
   cherriesText: {fileID: 0}
+--- !u!114 &9157193603709516101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5225274038207700208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c9bf1c0c2a4a459b0c1fc439466d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charSprite: {fileID: 5028698731244766671}
+  animator: {fileID: 2622317171292227002}
+  charSprites:
+  - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
+  - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
+  - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  - {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+  animationControllers:
+  - {fileID: 9100000, guid: 6bd9c8e61f1bfff4bb0271929a7f61f4, type: 2}
+  - {fileID: 9100000, guid: c88c917f8e4442b439ffbfbb5b9e45b7, type: 2}
+  - {fileID: 9100000, guid: 9e4a95725b49ef94397de5ae21a80ccd, type: 2}
+  - {fileID: 9100000, guid: e3bb5ef2da93ffd498d95345599fe863, type: 2}

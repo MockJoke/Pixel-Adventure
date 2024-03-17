@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 7074810212961939107}
   - component: {fileID: 7074810212961939118}
   - component: {fileID: 7074810212961939117}
+  - component: {fileID: 8639589182549432050}
   m_Layer: 7
   m_Name: VirtualGuy Player
   m_TagString: Player
@@ -5072,3 +5073,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cherriesText: {fileID: 0}
+--- !u!114 &8639589182549432050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074810212961939110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5c9bf1c0c2a4a459b0c1fc439466d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charSprite: {fileID: 7074810212961939111}
+  animator: {fileID: 7074810212961939116}
+  charSprites:
+  - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
+  - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
+  - {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
+  - {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
+  animationControllers:
+  - {fileID: 9100000, guid: 6bd9c8e61f1bfff4bb0271929a7f61f4, type: 2}
+  - {fileID: 9100000, guid: c88c917f8e4442b439ffbfbb5b9e45b7, type: 2}
+  - {fileID: 9100000, guid: 9e4a95725b49ef94397de5ae21a80ccd, type: 2}
+  - {fileID: 9100000, guid: e3bb5ef2da93ffd498d95345599fe863, type: 2}
