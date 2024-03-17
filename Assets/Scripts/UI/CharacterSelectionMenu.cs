@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class CharacterSelectionMenu : MonoBehaviour
     [SerializeField] private Canvas selectionCanvas;
     [SerializeField] private Image charImg; 
     [SerializeField] private Sprite[] CharSprites;
+    [SerializeField] private TextMeshProUGUI charStatusText;
+    [SerializeField] private Button selectBtn;
     
     [Space]
     [SerializeField] private UnityEvent onClose;
@@ -29,7 +32,8 @@ public class CharacterSelectionMenu : MonoBehaviour
         selectionCanvas.enabled = false;
         onClose?.Invoke();
     }
-    
+
+    #region Character Navigation UI
     private void ShowCharacter(int charNo)
     {
         if(charNo > CharSprites.Length - 1)
@@ -39,13 +43,13 @@ public class CharacterSelectionMenu : MonoBehaviour
         else if(charNo < 0)
         {
             charNo = CharSprites.Length - 1;
-        } 
+        }
         
         currChar = charNo;
 
         charImg.sprite = CharSprites[currChar];
         
-        PlayerPrefs.SetInt("CurrentCar", currChar);
+        // SetSelectBtnInteractivity();
     }
 
     public void ShowNext()
@@ -56,5 +60,30 @@ public class CharacterSelectionMenu : MonoBehaviour
     public void ShowPrevious()
     {
         ShowCharacter(currChar - 1);
+    }
+
+    private void SetSelectBtnInteractivity()
+    {
+        if (GetCharStatus("A") == CharacterStatus.Unlocked)
+        {
+            selectBtn.interactable = true;
+        }
+        else
+        {
+            selectBtn.interactable = false;
+        }
+    }
+    #endregion
+
+    public void SelectChar()
+    {
+        PlayerPrefs.SetInt("Character", currChar);
+    }
+    
+    private CharacterStatus GetCharStatus(string character)
+    {
+        CharacterStatus levelStatus = (CharacterStatus)PlayerPrefs.GetInt(character, 0);
+        
+        return levelStatus;
     }
 }
