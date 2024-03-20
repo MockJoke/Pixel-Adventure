@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,7 @@ public class CharacterSelectionMenu : MonoBehaviour
     [SerializeField] private Image charImg; 
     [SerializeField] private Sprite[] CharSprites;
     [SerializeField] private TextMeshProUGUI charStatusText;
+    [SerializeField] private TextMeshProUGUI currCharText;
     [SerializeField] private Button selectBtn;
     
     [Space]
@@ -21,7 +23,12 @@ public class CharacterSelectionMenu : MonoBehaviour
         if (selectionCanvas == null)
             selectionCanvas = GetComponent<Canvas>();
     }
-    
+
+    void Start()
+    {
+        ShowCharacter(GetCurrCharIndex());
+    }
+
     public void OpenMenu()
     {
         selectionCanvas.enabled = true;
@@ -49,7 +56,9 @@ public class CharacterSelectionMenu : MonoBehaviour
 
         charImg.sprite = CharSprites[currChar];
         
-        // SetSelectBtnInteractivity();
+        SetSelectBtnInteractivity();
+        
+        SetCurrCharText();
     }
 
     public void ShowNext()
@@ -64,7 +73,7 @@ public class CharacterSelectionMenu : MonoBehaviour
 
     private void SetSelectBtnInteractivity()
     {
-        if (GetCharStatus("A") == CharacterStatus.Unlocked)
+        if (currChar != GetCurrCharIndex()) //GetCharStatus("A") == CharacterStatus.Unlocked)
         {
             selectBtn.interactable = true;
         }
@@ -73,11 +82,25 @@ public class CharacterSelectionMenu : MonoBehaviour
             selectBtn.interactable = false;
         }
     }
+
+    private void SetCurrCharText()
+    {
+        currCharText.gameObject.SetActive(currChar == GetCurrCharIndex());
+    }
     #endregion
 
+    public int GetCurrCharIndex()
+    {
+        return PlayerPrefs.GetInt("Character", 0);
+    }
+    
     public void SelectChar()
     {
         PlayerPrefs.SetInt("Character", currChar);
+        
+        SetSelectBtnInteractivity();
+        
+        SetCurrCharText();
     }
     
     private CharacterStatus GetCharStatus(string character)
