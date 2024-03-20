@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,20 +12,24 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
+    [SerializeField] private float jumpForce = 16f;
+    [SerializeField] private float doubleJumpForce = 10f;
+    [SerializeField] private int extraJumps = 1;
     [SerializeField] private LayerMask groundLayer;
-    
+
+    private int jumpCount = 0;
     private float dirX = 0f;
     private static readonly int animState = Animator.StringToHash("state");
 
     private enum MovementState
     {
-        idle,
-        running,
-        jumping,
-        falling
+        idle = 0,
+        running = 1,
+        jumping = 2,
+        falling = 3,
+        doubleJumping = 4
     }
-
+    
     void Awake()
     {
         if (rb == null)
@@ -43,6 +48,11 @@ public class PlayerMovement : MonoBehaviour
             dust = GetComponentInChildren<ParticleSystem>();
     }
 
+    void Start()
+    {
+        jumpCount = extraJumps;
+    }
+
     void Update()
     {
         // Game Paused
@@ -52,9 +62,19 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         Move();
 
+        if (IsGrounded())
+        {
+            jumpCount = extraJumps;
+        }
+
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            Jump();
+            Jump(jumpForce);
+        }
+        else if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        {
+            Jump(doubleJumpForce);
+            jumpCount--;
         }
 
         UpdateAnimationState();
@@ -65,11 +85,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
     }
 
-    private void Jump()
+    private void Jump(float jumpF)
     {
         CreateDust();
         AudioManager.Instance.PlaySound(AudioType.characterJump);
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.velocity = new Vector2(rb.velocity.x, jumpF);
     }
 
     private void UpdateAnimationState()
@@ -95,7 +115,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (rb.velocity.y > .1f)
         {
-            state = MovementState.jumping;
+            // if (jumpCount > 0)
+            // {
+                state = MovementState.jumping;
+            // }
+            // else
+            // {
+            //     state = MovementState.doubleJumping;
+            // }
         }
         else if (rb.velocity.y < -.1f)
         {
@@ -120,4 +147,4 @@ public class PlayerMovement : MonoBehaviour
     {
         sprite.flipX = false;
     }
-}     
+}

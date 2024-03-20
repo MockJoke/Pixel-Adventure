@@ -5033,7 +5033,9 @@ MonoBehaviour:
   animator: {fileID: 7074810212961939116}
   dust: {fileID: 4988972175772220614}
   moveSpeed: 7
-  jumpForce: 14
+  jumpForce: 16
+  doubleJumpForce: 10
+  extraJumps: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
