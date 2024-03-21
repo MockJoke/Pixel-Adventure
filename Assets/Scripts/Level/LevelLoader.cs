@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private Button levelBtn;
-    [SerializeField] private string levelName;
+    [SerializeField] private LevelName levelName;
 
     void Awake()
     {
@@ -33,11 +33,11 @@ public class LevelLoader : MonoBehaviour
                 break;
 
             case LevelStatus.Unlocked:
-                SceneManager.LoadScene(levelName);
+                SceneManager.LoadScene(levelName.ToString());
                 break;
 
             case LevelStatus.Completed:
-                SceneManager.LoadScene(levelName);
+                SceneManager.LoadScene(levelName.ToString());
                 break;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public string[] Levels;
+    public LevelName[] Levels;
 
     protected override void Awake()
     {
@@ -27,7 +27,7 @@ public class LevelManager : Singleton<LevelManager>
     public void MarkLevelComplete()
     {
         // finding the index of the active level from the array of Levels
-        int currentSceneIndex = Array.FindIndex(Levels, level => level == SceneManager.GetActiveScene().name);
+        int currentSceneIndex = Array.FindIndex(Levels, level => level.ToString() == SceneManager.GetActiveScene().name);
 
         SetLevelStatus(Levels[currentSceneIndex], LevelStatus.Completed);
 
@@ -47,7 +47,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         int i = 0;
         
-        foreach (string level in Levels)
+        foreach (LevelName level in Levels)
         {
             if (GetLevelStatus(level) == LevelStatus.Unlocked)
             {
@@ -63,16 +63,16 @@ public class LevelManager : Singleton<LevelManager>
         SceneManager.LoadScene(GetLatestUnlockedLevelNo() + 1);
     }
     
-    public LevelStatus GetLevelStatus(string level)
+    public LevelStatus GetLevelStatus(LevelName level)
     {
-        LevelStatus levelStatus = (LevelStatus)PlayerPrefs.GetInt(level, 0);
+        LevelStatus levelStatus = (LevelStatus)PlayerPrefs.GetInt(level.ToString(), 0);
         
         return levelStatus;
     }
 
-    public void SetLevelStatus(string level, LevelStatus levelStatus)
+    public void SetLevelStatus(LevelName level, LevelStatus levelStatus)
     {
-        PlayerPrefs.SetInt(level, (int)levelStatus);
+        PlayerPrefs.SetInt(level.ToString(), (int)levelStatus);
     }
 
     public void ResetLevelProgress()
