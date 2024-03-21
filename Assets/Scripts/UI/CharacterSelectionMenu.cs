@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class CharacterSelectionMenu : MonoBehaviour
 {
     [SerializeField] private Canvas selectionCanvas;
-    [SerializeField] private Image charImg; 
-    [SerializeField] private Sprite[] CharSprites;
-    [SerializeField] private TextMeshProUGUI charStatusText;
+    [SerializeField] private Image charImg;
     [SerializeField] private TextMeshProUGUI currCharText;
+    [SerializeField] private TextMeshProUGUI charNameText;
+    [SerializeField] private TextMeshProUGUI charStatusText;
     [SerializeField] private Button selectBtn;
+    [SerializeField] private CharacterDataSO charData;
     
     [Space]
     [SerializeField] private UnityEvent onClose;
@@ -43,22 +44,24 @@ public class CharacterSelectionMenu : MonoBehaviour
     #region Character Navigation UI
     private void ShowCharacter(int charNo)
     {
-        if(charNo > CharSprites.Length - 1)
+        if(charNo > charData.characterData.Count - 1)
         {
             charNo = 0;
         }
         else if(charNo < 0)
         {
-            charNo = CharSprites.Length - 1;
+            charNo = charData.characterData.Count - 1;
         }
         
         currChar = charNo;
 
-        charImg.sprite = CharSprites[currChar];
+        charImg.sprite = charData.characterData[currChar].charSprite;
         
         SetSelectBtnInteractivity();
         
         SetCurrCharText();
+        
+        SetCharData();
     }
 
     public void ShowNext()
@@ -87,6 +90,11 @@ public class CharacterSelectionMenu : MonoBehaviour
     {
         currCharText.gameObject.SetActive(currChar == GetCurrCharIndex());
     }
+
+    private void SetCharData()
+    {
+        charNameText.text = charData.characterData[currChar].charName.ToString();
+    }
     #endregion
 
     public int GetCurrCharIndex()
@@ -101,6 +109,8 @@ public class CharacterSelectionMenu : MonoBehaviour
         SetSelectBtnInteractivity();
         
         SetCurrCharText();
+        
+        SetCharData();
     }
     
     private CharacterStatus GetCharStatus(string character)
