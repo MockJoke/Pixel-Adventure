@@ -5029,7 +5029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7074810212961939105}
   playerCollider: {fileID: 7074810212961939106}
-  sprite: {fileID: 7074810212961939111}
+  charSprite: {fileID: 7074810212961939111}
   animator: {fileID: 7074810212961939116}
   dust: {fileID: 4988972175772220614}
   moveSpeed: 7
@@ -5089,6 +5089,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charSprite: {fileID: 7074810212961939111}
   animator: {fileID: 7074810212961939116}
+  playerMovement: {fileID: 7074810212961939107}
+  charData: {fileID: 11400000, guid: b8742332edaee3a44bfc6e4df6892380, type: 2}
   charSprites:
   - {fileID: -6367560908665664636, guid: 40de9a8703e2e5a47882b0b86451c741, type: 3}
   - {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}

@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private BoxCollider2D playerCollider;
-    [SerializeField] private SpriteRenderer sprite;
+    [SerializeField] private SpriteRenderer charSprite;
     [SerializeField] private Animator animator;
     [SerializeField] private ParticleSystem dust;
     
@@ -37,8 +37,8 @@ public class PlayerMovement : MonoBehaviour
         if (playerCollider == null)
             playerCollider = GetComponent<BoxCollider2D>();
 
-        if (sprite == null)
-            sprite = GetComponent<SpriteRenderer>();
+        if (charSprite == null)
+            charSprite = GetComponent<SpriteRenderer>();
 
         if (animator == null)
             animator = GetComponent<Animator>();
@@ -82,6 +82,17 @@ public class PlayerMovement : MonoBehaviour
         UpdateAnimationState();
     }
 
+    public void SetData(CharacterDataSO.CharacterData charData)
+    {
+        charSprite.sprite = charData.charSprite;
+        animator.runtimeAnimatorController = charData.animatorController;
+
+        moveSpeed = charData.moveSpeed;
+        jumpForce = charData.jumpForce;
+        doubleJumpForce = charData.doubleJumpForce;
+        maxAirJumpCnt = charData.maxAirJumpCnt;
+    }
+
     private void Move()
     {
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
@@ -102,13 +113,13 @@ public class PlayerMovement : MonoBehaviour
         {
             CreateDust();
             state = MovementState.running;
-            sprite.flipX = false;
+            charSprite.flipX = false;
         }
         else if (dirX < 0f) 
         {
             CreateDust();
             state = MovementState.running;
-            sprite.flipX = true;
+            charSprite.flipX = true;
         }
         else
         {
@@ -140,6 +151,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetFlipping()
     {
-        sprite.flipX = false;
+        charSprite.flipX = false;
     }
 }
