@@ -9,7 +9,7 @@ public class CharacterDataSO : ScriptableObject
     [System.Serializable]
     public struct CharacterData
     {
-        public Characters charName;
+        public CharacterName charName;
         public float moveSpeed;
         public float jumpForce;
         public float doubleJumpForce;
@@ -21,7 +21,7 @@ public class CharacterDataSO : ScriptableObject
     public List<CharacterData> characterData;
 }
 
-public enum Characters
+public enum CharacterName
 {
     None = 0,
     VirtualGuy = 1,
