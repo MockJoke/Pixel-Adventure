@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -12,12 +11,12 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 16f;
+    [SerializeField] private float jumpForce = 14f;
     [SerializeField] private float doubleJumpForce = 10f;
-    [SerializeField] private int extraJumps = 1;
+    [SerializeField] private int maxAirJumpCnt = 1;
     [SerializeField] private LayerMask groundLayer;
 
-    private int jumpCount = 0;
+    private int airJumpCnt = 0;
     private float dirX = 0f;
     private static readonly int animState = Animator.StringToHash("state");
 
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        jumpCount = extraJumps;
+        airJumpCnt = maxAirJumpCnt;
     }
 
     void Update()
@@ -64,17 +63,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsGrounded())
         {
-            jumpCount = extraJumps;
+            airJumpCnt = 0;
         }
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButton("Jump"))
         {
-            Jump(jumpForce);
-        }
-        else if (Input.GetButtonDown("Jump") && jumpCount > 0)
-        {
-            Jump(doubleJumpForce);
-            jumpCount--;
+            if (IsGrounded())
+            {
+                Jump(jumpForce);
+            }
+            else if (Input.GetButtonDown("Jump") && airJumpCnt < maxAirJumpCnt)
+            {
+                Jump(doubleJumpForce);
+                airJumpCnt++;
+            }
         }
 
         UpdateAnimationState();
@@ -95,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimationState()
     {
         MovementState state;
-
+        
         if (dirX > 0f)
         {
             CreateDust();
@@ -112,23 +114,16 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.idle;
         }
-
+        
         if (rb.velocity.y > .1f)
         {
-            // if (jumpCount > 0)
-            // {
-                state = MovementState.jumping;
-            // }
-            // else
-            // {
-            //     state = MovementState.doubleJumping;
-            // }
+            state = airJumpCnt == 0 ? MovementState.jumping : MovementState.doubleJumping;
         }
         else if (rb.velocity.y < -.1f)
         {
             state = MovementState.falling;
         }
-
+        
         animator.SetInteger(animState, (int)state);
     }
 
