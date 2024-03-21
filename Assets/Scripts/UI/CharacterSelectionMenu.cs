@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -76,7 +77,7 @@ public class CharacterSelectionMenu : MonoBehaviour
 
     private void SetSelectBtnInteractivity()
     {
-        if (currChar != GetCurrCharIndex()) //GetCharStatus("A") == CharacterStatus.Unlocked)
+        if (currChar != GetCurrCharIndex() && isCharAvailable(charData.characterData[currChar].charName))
         {
             selectBtn.interactable = true;
         }
@@ -113,10 +114,17 @@ public class CharacterSelectionMenu : MonoBehaviour
         SetCharData();
     }
     
-    private CharacterStatus GetCharStatus(string character)
+    private bool isCharAvailable(CharacterName characterName)
     {
-        CharacterStatus levelStatus = (CharacterStatus)PlayerPrefs.GetInt(character, 0);
+        int charIndex = charData.characterData.FindIndex( data => data.charName == characterName);
+
+        int lvl = (int)charData.characterData[charIndex].unlocksAtLvl;
         
-        return levelStatus;
+        if (lvl <= LevelManager.Instance.GetLatestUnlockedLevelNo() + 1)
+        {
+            return true;
+        }
+        
+        return false;
     }
 }

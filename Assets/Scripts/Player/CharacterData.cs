@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -16,6 +15,7 @@ public class CharacterDataSO : ScriptableObject
         public int maxAirJumpCnt;
         public Sprite charSprite;
         public AnimatorController animatorController;
+        public LevelName unlocksAtLvl;
     }
 
     public List<CharacterData> characterData;
