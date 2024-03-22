@@ -9,10 +9,9 @@ public class CharacterSelectionMenu : MonoBehaviour
 {
     [SerializeField] private Canvas selectionCanvas;
     [SerializeField] private Image charImg;
-    [SerializeField] private TextMeshProUGUI currCharText;
     [SerializeField] private TextMeshProUGUI charNameText;
-    [SerializeField] private TextMeshProUGUI charStatusText;
     [SerializeField] private Button selectBtn;
+    [SerializeField] private TextMeshProUGUI selectBtnText;
     [SerializeField] private CharacterDataSO charData;
     
     [Space]
@@ -60,8 +59,6 @@ public class CharacterSelectionMenu : MonoBehaviour
         
         SetSelectBtnInteractivity();
         
-        SetCurrCharText();
-        
         SetCharData();
     }
 
@@ -77,19 +74,21 @@ public class CharacterSelectionMenu : MonoBehaviour
 
     private void SetSelectBtnInteractivity()
     {
-        if (currChar != GetCurrCharIndex() && isCharAvailable(charData.characterData[currChar].charName))
+        if (currChar == GetCurrCharIndex())
+        {
+            selectBtn.interactable = false;
+            selectBtnText.text = "SELECTED";
+        }
+        else if (isCharAvailable(charData.characterData[currChar].charName))
         {
             selectBtn.interactable = true;
+            selectBtnText.text = "SELECT";
         }
         else
         {
             selectBtn.interactable = false;
+            selectBtnText.text = $"Unlocks at Level{GetCharUnlockLvl(currChar)}";
         }
-    }
-
-    private void SetCurrCharText()
-    {
-        currCharText.gameObject.SetActive(currChar == GetCurrCharIndex());
     }
 
     private void SetCharData()
@@ -109,8 +108,6 @@ public class CharacterSelectionMenu : MonoBehaviour
         
         SetSelectBtnInteractivity();
         
-        SetCurrCharText();
-        
         SetCharData();
     }
     
@@ -118,7 +115,7 @@ public class CharacterSelectionMenu : MonoBehaviour
     {
         int charIndex = charData.characterData.FindIndex( data => data.charName == characterName);
 
-        int lvl = (int)charData.characterData[charIndex].unlocksAtLvl;
+        int lvl = GetCharUnlockLvl(charIndex);
         
         if (lvl <= LevelManager.Instance.GetLatestUnlockedLevelNo() + 1)
         {
@@ -126,5 +123,10 @@ public class CharacterSelectionMenu : MonoBehaviour
         }
         
         return false;
+    }
+
+    private int GetCharUnlockLvl(int charIndex)
+    {
+        return (int)charData.characterData[charIndex].unlocksAtLvl;
     }
 }
