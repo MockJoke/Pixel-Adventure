@@ -46,19 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectSounds:
   - name: 11
-    clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    clip: {fileID: 8300000, guid: c606d268216ee7c4cb9c74f76cc95b0c, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: 12
-    clip: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+    clip: {fileID: 8300000, guid: a0010a1a0c474473b81729eb770c485f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
   - name: 32
-    clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -69,28 +69,52 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: 33
+    clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: 13
+    clip: {fileID: 8300000, guid: 4b4dd7245f6104c8c8eb07ccf6b386ed, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   bgSounds:
   - name: 1
-    clip: {fileID: 8300000, guid: 475f4837af487ce4a9e68bb227455e4c, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: e9ff934ec325903449c755a607b92429, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: 2
-    clip: {fileID: 8300000, guid: 90eae78e8ce85a849b5b0ca11b2de641, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: 831910d1adb400f40ae01a5a64d4a47d, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: 3
-    clip: {fileID: 8300000, guid: 47f45ef7b5767674393cc401fc325705, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: e51d9812da12218448661abf068d0f90, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: 4
-    clip: {fileID: 8300000, guid: 1532c7e67c2d60c4c8780da14b7e8fcf, type: 3}
-    volume: 0.3
+    clip: {fileID: 8300000, guid: 53a653191bfdd264791cf63a8aefc0e9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: 5
+    clip: {fileID: 8300000, guid: 1cf5b25d980667e48bebcd18749503b7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: 6
+    clip: {fileID: 8300000, guid: 073bb6b9f32dc81498e972a0c06ca570, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1

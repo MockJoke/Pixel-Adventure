@@ -20,6 +20,7 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             GetComponentInParent<CheckpointManager>().SetLatestCheckpoint(transform);
+            AudioManager.Instance.PlaySound(AudioType.checkpointPass);
             animator.SetTrigger(onCompleteAnim);
             checkpointCollider.enabled = false;
         }

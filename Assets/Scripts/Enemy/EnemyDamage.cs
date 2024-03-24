@@ -41,6 +41,7 @@ public class EnemyDamage : MonoBehaviour
 
     public void Die()
     {
+        AudioManager.Instance.PlaySound(AudioType.enemyHit);
         animator.SetTrigger(dieAnim);
         enemyCollider.enabled = false;
         Destroy(gameObject, 1.25f);
