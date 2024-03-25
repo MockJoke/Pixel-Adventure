@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
-    [SerializeField] private float doubleJumpForce = 10f;
+    [SerializeField] private float extraJumpForce = 10f;
     [SerializeField] private int maxAirJumpCnt = 1;
     [SerializeField] private LayerMask groundLayer;
 
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (Input.GetButtonDown("Jump") && airJumpCnt < maxAirJumpCnt)
             {
-                Jump(doubleJumpForce);
+                Jump(extraJumpForce);
                 airJumpCnt++;
             }
         }
@@ -89,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveSpeed = charData.moveSpeed;
         jumpForce = charData.jumpForce;
-        doubleJumpForce = charData.doubleJumpForce;
+        extraJumpForce = charData.extraJumpForce;
         maxAirJumpCnt = charData.maxAirJumpCnt;
     }
 

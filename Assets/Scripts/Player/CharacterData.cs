@@ -11,7 +11,7 @@ public class CharacterDataSO : ScriptableObject
         public CharacterName charName;
         public float moveSpeed;
         public float jumpForce;
-        public float doubleJumpForce;
+        public float extraJumpForce;
         public int maxAirJumpCnt;
         public Sprite charSprite;
         public AnimatorController animatorController;
