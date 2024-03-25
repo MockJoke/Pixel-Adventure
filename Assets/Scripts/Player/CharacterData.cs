@@ -16,6 +16,7 @@ public class CharacterDataSO : ScriptableObject
         public Sprite charSprite;
         public AnimatorController animatorController;
         public LevelName unlocksAtLvl;
+        public bool canAttack;
     }
 
     public List<CharacterData> characterData;

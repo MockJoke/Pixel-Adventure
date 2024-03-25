@@ -10,6 +10,10 @@ public class CharacterSelectionMenu : MonoBehaviour
     [SerializeField] private Canvas selectionCanvas;
     [SerializeField] private Image charImg;
     [SerializeField] private TextMeshProUGUI charNameText;
+    [SerializeField] private TextMeshProUGUI moveSpeedText;
+    [SerializeField] private TextMeshProUGUI jumpHeightText;
+    [SerializeField] private TextMeshProUGUI jumpCountText;
+    [SerializeField] private TextMeshProUGUI attackText;
     [SerializeField] private Button selectBtn;
     [SerializeField] private TextMeshProUGUI selectBtnText;
     [SerializeField] private CharacterDataSO charData;
@@ -94,6 +98,24 @@ public class CharacterSelectionMenu : MonoBehaviour
     private void SetCharData()
     {
         charNameText.text = charData.characterData[currChar].charName.ToString();
+
+        moveSpeedText.text = charData.characterData[currChar].moveSpeed switch
+        {
+            <= 6 => "Slow",
+            > 6 and < 9 => "Medium",
+            _ => "Fast"
+        };
+        
+        jumpHeightText.text = charData.characterData[currChar].jumpForce switch
+        {
+            <= 10 => "Low",
+            > 10 and <= 14 => "Medium",
+            _ => "High"
+        };
+
+        jumpCountText.text = $"{charData.characterData[currChar].maxAirJumpCnt}";
+
+        attackText.text = charData.characterData[currChar].canAttack ? "Yes" : "No";
     }
     #endregion
 
