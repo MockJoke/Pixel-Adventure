@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8502205729162561971}
   coll: {fileID: 1738363706891292792}
-  speed: 5
+  speed: 8
   resetTime: 2
 --- !u!61 &1738363706891292792
 BoxCollider2D:
