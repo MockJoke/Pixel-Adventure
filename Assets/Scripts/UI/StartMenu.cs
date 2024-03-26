@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class StartMenu : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI startBtnText;
     [SerializeField] private Canvas HomeCanvas;
     [SerializeField] private Canvas LevelsCanvas;
-    [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private CharacterSelectionMenu characterSelectionMenu;
-    [SerializeField] private TextMeshProUGUI startBtnText;
+    [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private Canvas ControlsCanvas;
     
     void Awake()
     {
@@ -51,5 +52,17 @@ public class StartMenu : MonoBehaviour
     {
         CloseHomeMenu();
         characterSelectionMenu.OpenMenu();
+    }
+
+    public void OpenControlsMenu()
+    {
+        CloseHomeMenu();
+        ControlsCanvas.enabled = true;
+    }
+
+    public void CloseControlsMenu()
+    {
+        ControlsCanvas.enabled = false;
+        OpenHomeMenu();
     }
 }
