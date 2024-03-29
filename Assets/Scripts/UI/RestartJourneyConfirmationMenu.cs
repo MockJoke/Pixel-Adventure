@@ -15,6 +15,7 @@ public class RestartJourneyConfirmationMenu : MonoBehaviour
         LevelManager.Instance.ResetLevelProgress();
         SceneManager.LoadScene("Scenes/Start Screen");
         
+        PlayerPrefs.SetInt("Character", 0);
         PlayerPrefs.SetInt("LifeCount", 3);
         PlayerPrefs.SetInt("Foods", 0);
 
