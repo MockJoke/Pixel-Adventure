@@ -7,8 +7,10 @@ public class QuitMenu : MonoBehaviour
     {
 #if UNITY_EDITOR 
         EditorApplication.isPlaying = false;
-#else 
-		Application.Quit();
+#elif (UNITY_STANDALONE) 
+    Application.Quit();
+#elif (UNITY_WEBGL)
+    Application.OpenURL("https://mockjoke.itch.io/pixel-adventure");
 #endif
     }
 }
