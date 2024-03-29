@@ -13,6 +13,7 @@ public class CharacterSelectionMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moveSpeedText;
     [SerializeField] private TextMeshProUGUI jumpHeightText;
     [SerializeField] private TextMeshProUGUI jumpCountText;
+    [SerializeField] private TextMeshProUGUI dashText;
     [SerializeField] private TextMeshProUGUI attackText;
     [SerializeField] private Button selectBtn;
     [SerializeField] private TextMeshProUGUI selectBtnText;
@@ -115,6 +116,8 @@ public class CharacterSelectionMenu : MonoBehaviour
 
         jumpCountText.text = $"{charData.characterData[currChar].maxAirJumpCnt}";
 
+        dashText.text = charData.characterData[currChar].dashSpeed > 0 ? "Yes" : "No";
+        
         attackText.text = charData.characterData[currChar].canAttack ? "Yes" : "No";
     }
     #endregion

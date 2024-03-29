@@ -124,6 +124,10 @@ public class PlayerMovement : MonoBehaviour
         jumpForce = charData.jumpForce;
         extraJumpForce = charData.extraJumpForce;
         maxAirJumpCnt = charData.maxAirJumpCnt;
+
+        dashSpeed = charData.dashSpeed;
+        dashDuration = charData.dashDuration;
+        dashCooldownDuration = charData.dashCooldownDuration;
     }
 
     private void Move()
