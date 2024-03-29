@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     
     [Header("Dash")]
-    [SerializeField, Range(0f, 30f)] private float dashSpeed = 21f;
+    [SerializeField, Range(0f, 30f), Tooltip("Set as 0, if player can't dash")] private float dashSpeed = 21f;
     [SerializeField, Range(0f, 1f), Tooltip("Amount of time, player will remain in dashing")] private float dashDuration = 0.2f;
     [SerializeField, Range(0f, 5f), Tooltip("Duration bw two dashes")] private float dashCooldownDuration = 1f;
     
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         Move();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashSpeed >= 0f)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashSpeed > 0f)
         {
             if (!isDashing && dashCoolDownTimer >= dashCooldownDuration)
             {
