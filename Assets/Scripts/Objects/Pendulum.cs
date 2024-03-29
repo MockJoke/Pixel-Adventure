@@ -109,7 +109,11 @@ public class Pendulum : MonoBehaviour
 
         radius = Vector3.Distance(plank.position, ball.position);
 
+    #if  UNITY_EDITOR
         Vector3 center = EditorApplication.isPlaying ? initPos : transform.position;
+    #else
+        Vector3 center = transform.position;
+    #endif
         
         if (closedLoop)
         {
