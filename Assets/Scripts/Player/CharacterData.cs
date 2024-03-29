@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CharacterData", menuName = "ScriptableObjects/CharacterDataSO", order = 1)]
@@ -10,7 +9,7 @@ public class CharacterDataSO : ScriptableObject
     {
         public CharacterName charName;
         public Sprite charSprite;
-        public AnimatorController animatorController;
+        public RuntimeAnimatorController animatorController;
         public LevelName unlocksAtLvl;
         public float moveSpeed;
         public float jumpForce;
