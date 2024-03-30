@@ -2,57 +2,23 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : Component
 {
-    #region Fields
-    /// <summary>
-    /// The instance.
-    /// </summary>
-    private static T instance;
-    #endregion
+    public static T Instance { get; private set; }
 
-    #region Properties
-    /// <summary>
-    /// Gets the instance.
-    /// </summary>
-    /// <value>The instance.</value>
-    public static T Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<T>();
-                
-                if (instance == null)
-                {
-                    GameObject obj = new GameObject
-                    {
-                        name = typeof (T).Name
-                    };
-                    
-                    instance = obj.AddComponent<T>();
-                }
-            }
-            
-            return instance;
-        }
-    }
-    #endregion
+    [SerializeField] private bool persistent = false;
 
-    #region Methods
-    /// <summary>
-    /// Use this for initialization.
-    /// </summary>
-    protected virtual void Awake ()
+    protected virtual void Awake()
     {
-        if (instance == null)
+        if (Instance != null && Instance != this)
         {
-            instance = this as T;
+            Destroy(this);
+            throw new System.Exception($"{Instance.name} {gameObject.name} An instance of this singleton already exists.");
         }
         else
         {
-            Destroy (gameObject);
-            return;
+            Instance = this as T;
         }
+        
+        if (persistent)
+            DontDestroyOnLoad(Instance);
     }
-    #endregion
 }
