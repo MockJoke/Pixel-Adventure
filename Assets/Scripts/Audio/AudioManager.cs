@@ -104,7 +104,7 @@ public class AudioManager : Singleton<AudioManager>
         }
         else
         {
-            currBgMusicIndex = Array.FindIndex(effectSounds, sound => sound.name == audioName);
+            currBgMusicIndex = Array.FindIndex(bgSounds, sound => sound.name == audioName);
 
             if (currBgMusicIndex < 0)
             {
@@ -124,7 +124,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private int GetRandomBgMusicIndex()
     {
-        return UnityEngine.Random.Range(0, bgSounds.Length - 1);
+        return UnityEngine.Random.Range(0, bgSounds.Length);
     }
     
     public AudioType getCurrBgSongName() 
