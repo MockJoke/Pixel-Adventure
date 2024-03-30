@@ -5,11 +5,9 @@ using UnityEngine.SceneManagement;
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private LevelName[] Levels;
-
-    protected override void Awake()
+    
+    void Start()
     {
-        base.Awake();
-        
         UnlockFirstLevel();
     }
 

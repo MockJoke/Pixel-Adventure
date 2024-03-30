@@ -10,7 +10,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private Canvas ControlsCanvas;
     
-    void Awake()
+    void Start()
     {
         startBtnText.text = LevelManager.Instance.GetLatestUnlockedLevelNo() == 0 ? "START" : "CONTINUE";
     }
