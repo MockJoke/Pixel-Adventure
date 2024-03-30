@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    public Sound[] effectSounds;
-    public Sound[] bgSounds;
+    [SerializeField] private Sound[] effectSounds;
+    [SerializeField] private Sound[] bgSounds;
+
+    [SerializeField] private bool updateBgMusicOnSceneChange = false;
 
     private int currBgMusicIndex = -1;      // set -1 to signify no song playing
 
@@ -17,22 +20,20 @@ public class AudioManager : Singleton<AudioManager>
     {
         base.Awake();
 
-        DontDestroyOnLoad(gameObject);
-
         // get preferences
         mVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
         eVol = PlayerPrefs.GetFloat("EffectsVolume", 1f);
 
         createAudioSources(effectSounds, eVol);     // create sources for effects
         createAudioSources(bgSounds, mVol);   // create sources for music
+        
+        if (updateBgMusicOnSceneChange) 
+            SceneManager.activeSceneChanged += ChangeBgMusicOnSceneChange;
     }
     
     void Start() 
     {
-        if (bgSounds.Length > 0)
-        {
-            PlayMusic(true);
-        }
+        PlayMusic(true);
         
         SetMuteState();
     }
@@ -48,6 +49,11 @@ public class AudioManager : Singleton<AudioManager>
                 PlayMusic(true);
             }
         }
+    }
+
+    private void ChangeBgMusicOnSceneChange(Scene curr, Scene next)
+    {
+        PlayMusic(true);
     }
     
     // create sources
@@ -91,6 +97,9 @@ public class AudioManager : Singleton<AudioManager>
     
     public void PlayMusic(bool random, AudioType audioName = AudioType.None)
     {
+        if (bgSounds.Length == 0)
+            return;
+        
         // If already playing on Music, stop it first
         if (currBgMusicIndex != -1)
         {
