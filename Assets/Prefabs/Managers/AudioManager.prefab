@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a65b50f69183e478f7a5b9f757241b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  persistent: 1
   effectSounds:
   - name: 11
     clip: {fileID: 8300000, guid: c606d268216ee7c4cb9c74f76cc95b0c, type: 3}
@@ -118,4 +119,5 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  updateBgMusicOnSceneChange: 1
   isMuted: 0

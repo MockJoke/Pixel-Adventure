@@ -10,7 +10,7 @@ public class QuitMenu : MonoBehaviour
 #elif (UNITY_STANDALONE) 
     Application.Quit();
 #elif (UNITY_WEBGL)
-    Application.OpenURL("https://mockjoke.itch.io/pixel-adventure");
+    Application.OpenURL("about:blank");
 #endif
     }
 }
