@@ -4,18 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : Singleton<LevelManager>
 {
-    public LevelName[] Levels;
+    [SerializeField] private LevelName[] Levels;
 
     protected override void Awake()
     {
         base.Awake();
         
-        DontDestroyOnLoad(gameObject);
-        
         UnlockFirstLevel();
     }
 
-    void UnlockFirstLevel()
+    private void UnlockFirstLevel()
     {
         // the very first time the game starts, the first level1 should be unlocked to play 
         if (GetLevelStatus(Levels[0]) == LevelStatus.Locked)
