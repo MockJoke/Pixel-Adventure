@@ -2548,7 +2548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5616,6 +5616,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425272333176132977, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 425272333176132977, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 425272333176132977, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 425272333176132977, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1456990577097310669, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5677,12 +5693,44 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2738950427518890533, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765145342753729042, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765145342753729042, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765145342753729042, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2765145342753729042, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3492528985106311590, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
       propertyPath: m_Name
       value: ControlsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303993180839083706, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303993180839083706, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303993180839083706, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303993180839083706, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825306146852283067, guid: 18d52f9cef9d74f49ad7e88c0881450d, type: 3}
       propertyPath: m_Pivot.x

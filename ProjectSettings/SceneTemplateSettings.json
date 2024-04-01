@@ -105,6 +105,11 @@
             "userAdded": false,
             "type": "UnityEngine.Texture2D",
             "defaultInstantiationMode": 0
+        },
+        {
+            "userAdded": false,
+            "type": "UnityEngine.Timeline.TimelineAsset",
+            "defaultInstantiationMode": 0
         }
     ],
     "defaultDependencyTypeInfo": {

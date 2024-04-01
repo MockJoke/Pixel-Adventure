@@ -1701,7 +1701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.7647059}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2049,9 +2049,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 5427882530439528739}
   mainPanel: {fileID: 2952585268429802791}
-  extraLifePanel: {fileID: 5040153650536284423}
-  playerLife: {fileID: 0}
   startAgainBtn: {fileID: 7234353952666435921}
+  playerLife: {fileID: 0}
+  extraLifePanel: {fileID: 5040153650536284423}
   foodTradeFactor: 3
   totalLifeCount: {fileID: 3498166476899369762}
   totalFoodCount: {fileID: 8592511605834724202}
