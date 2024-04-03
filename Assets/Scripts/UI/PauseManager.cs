@@ -22,6 +22,7 @@ public class PauseManager : MonoBehaviour
     {
         pauseCanvas.enabled = true;
         SetTimeScale(false);
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     public void ClosePauseMenu(bool resetTimeScale = true)
@@ -30,6 +31,8 @@ public class PauseManager : MonoBehaviour
         
         if (resetTimeScale)
             SetTimeScale(true);
+        
+        playerInput.SwitchCurrentActionMap("Player");
     }
 
     public void HomeMenu()
@@ -52,16 +55,7 @@ public class PauseManager : MonoBehaviour
 
     private void SetTimeScale(bool reset)
     {
-        if (reset)
-        {
-            playerInput.SwitchCurrentActionMap("Player");
-            Time.timeScale = 1;
-        }
-        else
-        {
-            playerInput.SwitchCurrentActionMap("UI");
-            Time.timeScale = 0;
-        }
+        Time.timeScale = reset ? 1 : 0;
     }
 
     public void OpenControls()
