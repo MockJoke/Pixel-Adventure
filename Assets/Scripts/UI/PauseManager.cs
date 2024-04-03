@@ -1,16 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private Canvas pauseCanvas;
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private Canvas controlsCanvas;
+    [SerializeField] private PlayerInput playerInput;
     
     void Awake()
     {
         if (pauseCanvas == null)
             pauseCanvas = GetComponent<Canvas>();
+        
+        if (playerInput == null)
+            playerInput = FindObjectOfType<PlayerInput>();
     }
 
     public void OpenPauseMenu()
@@ -47,7 +52,16 @@ public class PauseManager : MonoBehaviour
 
     private void SetTimeScale(bool reset)
     {
-        Time.timeScale = reset ? 1 : 0;
+        if (reset)
+        {
+            playerInput.SwitchCurrentActionMap("Player");
+            Time.timeScale = 1;
+        }
+        else
+        {
+            playerInput.SwitchCurrentActionMap("UI");
+            Time.timeScale = 0;
+        }
     }
 
     public void OpenControls()
