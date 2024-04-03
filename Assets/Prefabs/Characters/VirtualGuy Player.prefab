@@ -14666,6 +14666,7 @@ GameObject:
   - component: {fileID: 7074810212961939118}
   - component: {fileID: 7074810212961939117}
   - component: {fileID: 8639589182549432050}
+  - component: {fileID: 8247230756945877305}
   m_Layer: 7
   m_Name: VirtualGuy Player
   m_TagString: Player
@@ -14865,6 +14866,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  grabCheckRadius: 0.24
+  grabRightOffset: {x: 0.16, y: 0}
+  grabLeftOffset: {x: -0.16, y: 0}
+  wallSlideSpeed: 2.5
+  wallClimbForce: {x: 4, y: 14}
+  wallJumpForce: {x: 10.5, y: 18}
 --- !u!114 &7074810212961939118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14915,3 +14922,117 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 7074810212961939107}
   charData: {fileID: 11400000, guid: b8742332edaee3a44bfc6e4df6892380, type: 2}
+--- !u!114 &8247230756945877305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7074810212961939110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: af0599c3934a38043becd98b84100ad0, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7074810212961939107}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ReadHorizontalMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7db9933a-75e5-49ab-a0d7-1d7f25ddbdcb
+    m_ActionName: Player/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7074810212961939107}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ReadJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8c1d6eab-bb12-4e76-8757-a4da86187b64
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e73befde-3336-4e2e-bc59-935cff3bef62
+    m_ActionName: Player/SwordAttack[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7504715a-13b0-4472-9a39-34a7d7394375
+    m_ActionName: Player/BowAttack[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 329ab8a0-3825-4eb6-bb48-29d84bd66e07
+    m_ActionName: Player/Toolkit[/Keyboard/t]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 301a6634-5fa4-4c5a-8559-345a3400818d
+    m_ActionName: Player/Skip[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 68482bb6-52b3-4c66-baa8-839f7e2df57e
+    m_ActionName: Player/Continue[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f1e162ff-15c8-4870-918d-165638ee6de4
+    m_ActionName: Player/Full Screen[/Keyboard/f11]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5843b73d-3a5b-4e89-aa14-5a42d71fb296
+    m_ActionName: Player/Quit[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4d284ef2-d613-4cdf-a230-81da6cc157c0
+    m_ActionName: UI/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 368f66e0-86b9-44e9-a162-2d6bcdf8a826
+    m_ActionName: UI/Quit[/Keyboard/f4]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7074810212961939107}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: ReadDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fa117c29-9374-4987-8ba0-7d3e814b0f1a
+    m_ActionName: Player/Dash[/Keyboard/leftShift]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

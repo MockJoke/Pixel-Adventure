@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -25,11 +26,23 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int maxAirJumpCnt = 1;
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("Wall Grab & Jump")]
+    [SerializeField] private float grabCheckRadius = 0.24f;
+    [SerializeField] private Vector2 grabRightOffset = new Vector2(0.16f, 0f);
+    [SerializeField] private Vector2 grabLeftOffset = new Vector2(-0.16f, 0f);
+    [SerializeField] private float wallSlideSpeed = 2.5f;
+    [SerializeField] private Vector2 wallClimbForce = new Vector2(4f, 14f);
+    [SerializeField] private Vector2 wallJumpForce = new Vector2(10.5f, 18f);
+    
     private float dirX = 0f;
     private int airJumpCnt = 0;
     private bool isDashing = false;
     private float dashTimer = 0f;
     private float dashCoolDownTimer = 0f;
+    private bool onRightWall = false;
+    private bool onLeftWall = false;
+    private bool grabbingWall = false;
+    private bool jumpingFromWall = false;
     private static readonly int animState = Animator.StringToHash("state");
 
     private enum MovementState
@@ -63,23 +76,70 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        #region For Old Input System (Unused)
         // Game Paused
-        if (Time.timeScale == 0)
-            return;
+        // if (Time.timeScale == 0)
+        //     return;
         
-        dirX = Input.GetAxisRaw("Horizontal");
+        // dirX = Input.GetAxisRaw("Horizontal");
+        // Move();
+
+        // if (Input.GetKeyDown(KeyCode.LeftShift) && dashSpeed > 0f)
+        // {
+        //     if (!isDashing && dashCoolDownTimer >= dashCooldownDuration)
+        //     {
+        //         isDashing = true;
+        //         PlayDashEffect();
+        //     }
+        // }
+        
+        // dashCoolDownTimer += Time.fixedDeltaTime;
+        //
+        // if (isDashing)
+        // {
+        //     if (dashTimer >= dashDuration)
+        //     {
+        //         ResetDash();
+        //     }
+        //     else
+        //     {
+        //         dashTimer += Time.fixedDeltaTime;
+        //         Dash();
+        //     }
+        // }
+        
+        // if (IsGrounded())
+        // {
+        //     airJumpCnt = 0;
+        // }
+
+        // if (Input.GetButton("Jump"))
+        // {
+        //     if (IsGrounded())
+        //     {
+        //         Jump(jumpForce);
+        //     }
+        //     else if (Input.GetButtonDown("Jump") && airJumpCnt < maxAirJumpCnt)
+        //     {
+        //         Jump(extraJumpForce);
+        //         airJumpCnt++;
+        //     }
+        // }
+        #endregion
+
+        UpdateAnimationState();
+    }
+
+    private void FixedUpdate()
+    {
         Move();
-
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashSpeed > 0f)
+        
+        if (IsGrounded())
         {
-            if (!isDashing && dashCoolDownTimer >= dashCooldownDuration)
-            {
-                isDashing = true;
-                PlayDashEffect();
-            }
+            airJumpCnt = 0;
         }
-
-        dashCoolDownTimer += Time.deltaTime;
+        
+        dashCoolDownTimer += Time.fixedDeltaTime;
 
         if (isDashing)
         {
@@ -89,30 +149,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                dashTimer += Time.deltaTime;
+                dashTimer += Time.fixedDeltaTime;
                 Dash();
             }
         }
-        
-        if (IsGrounded())
-        {
-            airJumpCnt = 0;
-        }
-
-        if (Input.GetButton("Jump"))
-        {
-            if (IsGrounded())
-            {
-                Jump(jumpForce);
-            }
-            else if (Input.GetButtonDown("Jump") && airJumpCnt < maxAirJumpCnt)
-            {
-                Jump(extraJumpForce);
-                airJumpCnt++;
-            }
-        }
-
-        UpdateAnimationState();
     }
 
     public void SetData(CharacterDataSO.CharacterData charData)
@@ -129,6 +169,42 @@ public class PlayerMovement : MonoBehaviour
         dashDuration = charData.dashDuration;
         dashCooldownDuration = charData.dashCooldownDuration;
     }
+
+    #region Input Actions
+
+    public void ReadHorizontalMovement(InputAction.CallbackContext context)
+    {
+        dirX = context.ReadValue<float>();
+    }
+
+    public void ReadJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (IsGrounded())
+            {
+                Jump(jumpForce);
+            }
+            else if (context.performed && airJumpCnt < maxAirJumpCnt)
+            {
+                Jump(extraJumpForce);
+                airJumpCnt++;
+            }
+        }
+    }
+
+    public void ReadDash(InputAction.CallbackContext context)
+    {
+        if (context.performed && dashSpeed > 0f)
+        {
+            if (!isDashing && dashCoolDownTimer >= dashCooldownDuration)
+            {
+                isDashing = true;
+                PlayDashEffect();
+            }
+        }
+    }
+    #endregion
 
     private void Move()
     {
@@ -193,6 +269,16 @@ public class PlayerMovement : MonoBehaviour
         Bounds bounds = playerCollider.bounds;
         return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
     }
+
+    private bool isOnRightWall()
+    {
+        return Physics2D.OverlapCircle((Vector2)transform.position + grabRightOffset, grabCheckRadius, groundLayer);
+    }
+    
+    private bool isOnLeftWall()
+    {
+        return Physics2D.OverlapCircle((Vector2)transform.position + grabLeftOffset, grabCheckRadius, groundLayer);
+    }
     
     private void PlayParticleEffect(ParticleSystem effect) 
     {
@@ -211,5 +297,13 @@ public class PlayerMovement : MonoBehaviour
     public void ResetFlipping()
     {
         charSprite.flipX = false;
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        
+        Gizmos.DrawWireSphere((Vector2)transform.position + grabRightOffset, grabCheckRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + grabLeftOffset, grabCheckRadius);
     }
 }
