@@ -117,7 +117,7 @@ public class PlayerLife : MonoBehaviour
     private void Respawn()
     {
         boxCollider.enabled = true;
-        playerMovement.ResetFlipping();
+        playerMovement.Flip(true);
         
         if (checkpointManager.hasPassedAnyCheckPoints())
         {

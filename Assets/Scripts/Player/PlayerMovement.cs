@@ -294,9 +294,16 @@ public class PlayerMovement : MonoBehaviour
         PlayParticleEffect(dashEffect);
     }
 
-    public void ResetFlipping()
+    public void Flip(bool reset = false)
     {
-        charSprite.flipX = false;
+        if (reset)
+        {
+            charSprite.flipX = false;
+        }
+        else
+        {
+            charSprite.flipX = !charSprite.flipX;
+        }
     }
     
     private void OnDrawGizmosSelected()
