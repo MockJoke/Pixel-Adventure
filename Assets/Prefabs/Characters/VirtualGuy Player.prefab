@@ -14866,12 +14866,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  grabCheckRadius: 0.24
-  grabRightOffset: {x: 0.16, y: 0}
-  grabLeftOffset: {x: -0.16, y: 0}
+  grabCheckRadius: 0.2
+  grabRightOffset: {x: 0.5, y: -0.4}
+  grabLeftOffset: {x: -0.5, y: -0.4}
   wallSlideSpeed: 2.5
   wallClimbForce: {x: 4, y: 14}
-  wallJumpForce: {x: 10.5, y: 18}
+  wallJumpForce: {x: 15, y: 15}
 --- !u!114 &7074810212961939118
 MonoBehaviour:
   m_ObjectHideFlags: 0

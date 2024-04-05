@@ -25,6 +25,12 @@ MonoBehaviour:
     dashDuration: 0
     dashCooldownDuration: 0
     canAttack: 0
+    canWallGrab: 0
+    grabCheckRadius: 0
+    grabRightOffset: {x: 0, y: 0}
+    grabLeftOffset: {x: 0, y: 0}
+    wallSlideSpeed: 0
+    wallJumpForce: {x: 0, y: 0}
   - charName: 2
     charSprite: {fileID: -6367560908665664636, guid: d348dff3819df794186a80cb95777629, type: 3}
     animatorController: {fileID: 9100000, guid: c88c917f8e4442b439ffbfbb5b9e45b7, type: 2}
@@ -33,10 +39,16 @@ MonoBehaviour:
     jumpForce: 14
     extraJumpForce: 10
     maxAirJumpCnt: 1
-    dashSpeed: 0
-    dashDuration: 0
-    dashCooldownDuration: 0
+    dashSpeed: 21
+    dashDuration: 0.2
+    dashCooldownDuration: 1
     canAttack: 0
+    canWallGrab: 0
+    grabCheckRadius: 0
+    grabRightOffset: {x: 0, y: 0}
+    grabLeftOffset: {x: 0, y: 0}
+    wallSlideSpeed: 0
+    wallJumpForce: {x: 0, y: 0}
   - charName: 3
     charSprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
     animatorController: {fileID: 9100000, guid: 9e4a95725b49ef94397de5ae21a80ccd, type: 2}
@@ -49,6 +61,12 @@ MonoBehaviour:
     dashDuration: 0
     dashCooldownDuration: 0
     canAttack: 0
+    canWallGrab: 0
+    grabCheckRadius: 0
+    grabRightOffset: {x: 0, y: 0}
+    grabLeftOffset: {x: 0, y: 0}
+    wallSlideSpeed: 0
+    wallJumpForce: {x: 0, y: 0}
   - charName: 4
     charSprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca, type: 3}
     animatorController: {fileID: 9100000, guid: e3bb5ef2da93ffd498d95345599fe863, type: 2}
@@ -61,3 +79,9 @@ MonoBehaviour:
     dashDuration: 0.2
     dashCooldownDuration: 1
     canAttack: 0
+    canWallGrab: 1
+    grabCheckRadius: 0.2
+    grabRightOffset: {x: 0.5, y: -0.4}
+    grabLeftOffset: {x: -0.5, y: -0.4}
+    wallSlideSpeed: 2.5
+    wallJumpForce: {x: 15, y: 15}

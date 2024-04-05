@@ -13,6 +13,7 @@ public class CharacterSelectionMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI jumpCountText;
     [SerializeField] private TextMeshProUGUI dashText;
     [SerializeField] private TextMeshProUGUI attackText;
+    [SerializeField] private TextMeshProUGUI wallGrabText;
     [SerializeField] private Button selectBtn;
     [SerializeField] private TextMeshProUGUI selectBtnText;
     [SerializeField] private CharacterDataSO charData;
@@ -117,6 +118,8 @@ public class CharacterSelectionMenu : MonoBehaviour
         dashText.text = charData.characterData[currChar].dashSpeed > 0 ? "Yes" : "No";
         
         attackText.text = charData.characterData[currChar].canAttack ? "Yes" : "No";
+
+        wallGrabText.text = charData.characterData[currChar].canWallGrab ? "Yes" : "No";
     }
     #endregion
 

@@ -19,6 +19,12 @@ public class CharacterDataSO : ScriptableObject
         [Range(0f, 1f), Tooltip("Amount of time, player will remain in dashing")] public float dashDuration ;
         [Range(0f, 5f), Tooltip("Duration bw two dashes")] public float dashCooldownDuration;
         public bool canAttack;
+        public bool canWallGrab;
+        public float grabCheckRadius;
+        public Vector2 grabRightOffset;
+        public Vector2 grabLeftOffset;
+        public float wallSlideSpeed;
+        public Vector2 wallJumpForce;
     }
 
     public List<CharacterData> characterData;
