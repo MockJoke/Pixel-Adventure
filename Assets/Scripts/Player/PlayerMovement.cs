@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,23 +27,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private int maxAirJumpCnt = 1;
     [SerializeField] private LayerMask groundLayer;
 
-    [Header("Wall Grab & Jump")]
-    [SerializeField] private float grabCheckRadius = 0.24f;
-    [SerializeField] private Vector2 grabRightOffset = new Vector2(0.16f, 0f);
-    [SerializeField] private Vector2 grabLeftOffset = new Vector2(-0.16f, 0f);
+    [Header("Wall Grab & Jump")] 
+    [SerializeField] private bool canWallGrab = false;
+    [SerializeField] private float grabCheckRadius = 0.2f;
+    [SerializeField] private Vector2 grabRightOffset = new Vector2(0.5f, -0.4f);
+    [SerializeField] private Vector2 grabLeftOffset = new Vector2(-0.5f, -0.4f);
     [SerializeField] private float wallSlideSpeed = 2.5f;
-    [SerializeField] private Vector2 wallClimbForce = new Vector2(4f, 14f);
-    [SerializeField] private Vector2 wallJumpForce = new Vector2(10.5f, 18f);
+    [SerializeField] private Vector2 wallJumpForce = new Vector2(15f, 15f);
     
     private float dirX = 0f;
     private int airJumpCnt = 0;
     private bool isDashing = false;
     private float dashTimer = 0f;
     private float dashCoolDownTimer = 0f;
-    private bool onRightWall = false;
-    private bool onLeftWall = false;
     private bool grabbingWall = false;
-    private bool jumpingFromWall = false;
+    private bool canMove = true;
     private static readonly int animState = Animator.StringToHash("state");
 
     private enum MovementState
@@ -51,7 +50,8 @@ public class PlayerMovement : MonoBehaviour
         running = 1,
         jumping = 2,
         falling = 3,
-        doubleJumping = 4
+        doubleJumping = 4,
+        wallSliding = 5,
     }
     
     void Awake()
@@ -133,6 +133,11 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Move();
+
+        if (isOnWall() && !IsGrounded())
+        {
+            WallSlide();
+        }
         
         if (IsGrounded())
         {
@@ -168,31 +173,21 @@ public class PlayerMovement : MonoBehaviour
         dashSpeed = charData.dashSpeed;
         dashDuration = charData.dashDuration;
         dashCooldownDuration = charData.dashCooldownDuration;
+        
+        canWallGrab = charData.canWallGrab;
+        grabCheckRadius = charData.grabCheckRadius;
+        grabRightOffset = charData.grabRightOffset;
+        grabLeftOffset = charData.grabLeftOffset;
+        wallSlideSpeed = charData.wallSlideSpeed;
+        wallJumpForce = charData.wallJumpForce;
     }
 
     #region Input Actions
-
     public void ReadHorizontalMovement(InputAction.CallbackContext context)
     {
         dirX = context.ReadValue<float>();
     }
-
-    public void ReadJump(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            if (IsGrounded())
-            {
-                Jump(jumpForce);
-            }
-            else if (context.performed && airJumpCnt < maxAirJumpCnt)
-            {
-                Jump(extraJumpForce);
-                airJumpCnt++;
-            }
-        }
-    }
-
+    
     public void ReadDash(InputAction.CallbackContext context)
     {
         if (context.performed && dashSpeed > 0f)
@@ -204,10 +199,40 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    
+    public void ReadJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isOnWall() && !IsGrounded())
+            {
+                WallJump();
+            }
+            else
+            {
+                if (IsGrounded())
+                {
+                    Jump(jumpForce);
+                }
+                else if (context.performed && airJumpCnt < maxAirJumpCnt)
+                {
+                    Jump(extraJumpForce);
+                    airJumpCnt++;
+                }
+            }
+        }
+    }
     #endregion
 
     private void Move()
     {
+        if (isOnWall() && !IsGrounded())
+            return;
+        
+        if (!canMove)
+            return;
+        
+        Debug.Log("Moving");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
     }
 
@@ -231,34 +256,81 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpF);
     }
 
+    private void WallJump()
+    {
+        StopCoroutine(DisableMovement(0));
+        StartCoroutine(DisableMovement(0.15f));
+        
+        PlayParticleEffect(jumpEffect);
+        AudioManager.Instance.PlaySound(AudioType.characterJump);
+
+        Debug.Log("Wall Jumping");
+        
+        rb.velocity = charSprite.flipX ? new Vector2(wallJumpForce.x, wallJumpForce.y) : new Vector2(-wallJumpForce.x, wallJumpForce.y);
+        
+        Flip();
+        
+    }
+
+    private void WallSlide()
+    {
+        if (!canMove)
+            return;
+        
+        rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+        
+        Debug.Log("Wall Sliding");
+    }
+
+    IEnumerator DisableMovement(float time)
+    {
+        Debug.Log("Disabling move");
+        canMove = false;
+        yield return new WaitForSeconds(time);
+        canMove = true;
+        Debug.Log("Re-enabling move");
+    }
+
     private void UpdateAnimationState()
     {
-        MovementState state;
-        
-        if (dirX > 0f)
+        MovementState state = MovementState.idle;
+
+        if (isOnWall())
         {
-            PlayParticleEffect(dustEffect);
-            state = MovementState.running;
-            charSprite.flipX = false;
-        }
-        else if (dirX < 0f) 
-        {
-            PlayParticleEffect(dustEffect);
-            state = MovementState.running;
-            charSprite.flipX = true;
+            state = MovementState.wallSliding;
         }
         else
         {
-            state = MovementState.idle;
-        }
-        
-        if (rb.velocity.y > .1f)
-        {
-            state = airJumpCnt == 0 ? MovementState.jumping : MovementState.doubleJumping;
-        }
-        else if (rb.velocity.y < -.1f)
-        {
-            state = MovementState.falling;
+            if (canMove)
+            {
+                if (dirX > 0f)
+                {
+                    PlayParticleEffect(dustEffect);
+                    state = MovementState.running;
+                    charSprite.flipX = false;
+                    Debug.Log("Flipped");
+                }
+                else if (dirX < 0f) 
+                {
+                    PlayParticleEffect(dustEffect);
+                    state = MovementState.running;
+                    charSprite.flipX = true;
+                    Debug.Log("Flipped");
+                }
+                else
+                {
+                    state = MovementState.idle;
+                }
+                
+                if (rb.velocity.y > .1f)
+                {
+                    state = airJumpCnt == 0 ? MovementState.jumping : MovementState.doubleJumping;
+                }
+                else if (rb.velocity.y < -.1f)
+                {
+                    state = MovementState.falling;
+                }
+            }
         }
         
         animator.SetInteger(animState, (int)state);
@@ -270,6 +342,14 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.BoxCast(bounds.center, bounds.size, 0f, Vector2.down, .1f, groundLayer);
     }
 
+    private bool isOnWall()
+    {
+        if (canWallGrab)
+            return isOnRightWall() || isOnLeftWall();
+        else
+            return false;
+    }
+    
     private bool isOnRightWall()
     {
         return Physics2D.OverlapCircle((Vector2)transform.position + grabRightOffset, grabCheckRadius, groundLayer);
