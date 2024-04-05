@@ -16,10 +16,8 @@ public class AudioManager : Singleton<AudioManager>
     
     public bool isMuted = false;
     
-    protected override void Awake() 
+    void Start() 
     {
-        base.Awake();
-
         // get preferences
         mVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
         eVol = PlayerPrefs.GetFloat("EffectsVolume", 1f);
@@ -29,10 +27,7 @@ public class AudioManager : Singleton<AudioManager>
         
         if (updateBgMusicOnSceneChange) 
             SceneManager.activeSceneChanged += ChangeBgMusicOnSceneChange;
-    }
-    
-    void Start() 
-    {
+        
         PlayMusic(true);
         
         SetMuteState();
