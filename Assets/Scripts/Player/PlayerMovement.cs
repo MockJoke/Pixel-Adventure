@@ -232,7 +232,6 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove)
             return;
         
-        Debug.Log("Moving");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
     }
 
@@ -263,13 +262,10 @@ public class PlayerMovement : MonoBehaviour
         
         PlayParticleEffect(jumpEffect);
         AudioManager.Instance.PlaySound(AudioType.characterJump);
-
-        Debug.Log("Wall Jumping");
         
         rb.velocity = charSprite.flipX ? new Vector2(wallJumpForce.x, wallJumpForce.y) : new Vector2(-wallJumpForce.x, wallJumpForce.y);
         
         Flip();
-        
     }
 
     private void WallSlide()
@@ -278,17 +274,13 @@ public class PlayerMovement : MonoBehaviour
             return;
         
         rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
-        
-        Debug.Log("Wall Sliding");
     }
 
     IEnumerator DisableMovement(float time)
     {
-        Debug.Log("Disabling move");
         canMove = false;
         yield return new WaitForSeconds(time);
         canMove = true;
-        Debug.Log("Re-enabling move");
     }
 
     private void UpdateAnimationState()
@@ -308,14 +300,12 @@ public class PlayerMovement : MonoBehaviour
                     PlayParticleEffect(dustEffect);
                     state = MovementState.running;
                     charSprite.flipX = false;
-                    Debug.Log("Flipped");
                 }
                 else if (dirX < 0f) 
                 {
                     PlayParticleEffect(dustEffect);
                     state = MovementState.running;
                     charSprite.flipX = true;
-                    Debug.Log("Flipped");
                 }
                 else
                 {
