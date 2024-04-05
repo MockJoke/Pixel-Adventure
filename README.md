@@ -20,7 +20,7 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 
 ### TODO:
 
-- [ ] Wall Climb & Jump
+- [x] Wall Climb & Jump
 - [ ] Background scrolling
 - [ ] Player character with combat support
 - [ ] More unique enemies
