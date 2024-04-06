@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MonobehaviourSingleton<AudioManager>
 {
     [SerializeField] private Sound[] effectSounds;
     [SerializeField] private Sound[] bgSounds;
@@ -21,7 +21,7 @@ public class AudioManager : Singleton<AudioManager>
         // get preferences
         mVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
         eVol = PlayerPrefs.GetFloat("EffectsVolume", 1f);
-
+        
         createAudioSources(effectSounds, eVol);     // create sources for effects
         createAudioSources(bgSounds, mVol);   // create sources for music
         
