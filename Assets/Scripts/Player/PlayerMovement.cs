@@ -40,8 +40,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing = false;
     private float dashTimer = 0f;
     private float dashCoolDownTimer = 0f;
-    private bool grabbingWall = false;
     private bool canMove = true;
+    
     private static readonly int animState = Animator.StringToHash("state");
 
     private enum MovementState
@@ -53,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
         doubleJumping = 4,
         wallSliding = 5,
     }
-    
+
+    #region Monobehaviour Methods
     void Awake()
     {
         if (rb == null)
@@ -159,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    #endregion
 
     public void SetData(CharacterDataSO.CharacterData charData)
     {
@@ -166,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
         animator.runtimeAnimatorController = charData.animatorController;
 
         moveSpeed = charData.moveSpeed;
+        
         jumpForce = charData.jumpForce;
         extraJumpForce = charData.extraJumpForce;
         maxAirJumpCnt = charData.maxAirJumpCnt;
@@ -326,6 +329,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetInteger(animState, (int)state);
     }
 
+    #region collider checking methods
     private bool IsGrounded()
     {
         Bounds bounds = playerCollider.bounds;
@@ -349,6 +353,15 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.OverlapCircle((Vector2)transform.position + grabLeftOffset, grabCheckRadius, groundLayer);
     }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        
+        Gizmos.DrawWireSphere((Vector2)transform.position + grabRightOffset, grabCheckRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + grabLeftOffset, grabCheckRadius);
+    }
+    #endregion
     
     private void PlayParticleEffect(ParticleSystem effect) 
     {
@@ -375,12 +388,32 @@ public class PlayerMovement : MonoBehaviour
             charSprite.flipX = !charSprite.flipX;
         }
     }
-    
-    private void OnDrawGizmosSelected()
+
+    #region Debug Methods
+    [ContextMenu("Enable Double Jump")]
+    private void EnableDoubleJump()
     {
-        Gizmos.color = Color.red;
-        
-        Gizmos.DrawWireSphere((Vector2)transform.position + grabRightOffset, grabCheckRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + grabLeftOffset, grabCheckRadius);
+        extraJumpForce = 10f;
+        maxAirJumpCnt = 1;
     }
+    
+    [ContextMenu("Enable Dash")]
+    private void EnableDash()
+    {
+        dashSpeed = 21;
+        dashDuration = 0.2f;
+        dashCooldownDuration = 1f;
+    }
+    
+    [ContextMenu("Enable WallGrab")]
+    private void EnableWallGrab()
+    {
+        canWallGrab = true;
+        grabCheckRadius = 0.2f;
+        grabRightOffset = new Vector2(0.5f, -0.4f);
+        grabLeftOffset = new Vector2(-0.5f, -0.4f);
+        wallSlideSpeed = 2.5f;
+        wallJumpForce = new Vector2(15f, 15f);;
+    }
+    #endregion
 }
