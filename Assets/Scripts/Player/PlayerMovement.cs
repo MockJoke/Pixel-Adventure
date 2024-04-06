@@ -287,7 +287,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MovementState state = MovementState.idle;
 
-        if (isOnWall())
+        if (isOnWall() && !IsGrounded())
         {
             state = MovementState.wallSliding;
         }
