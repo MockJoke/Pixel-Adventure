@@ -151,7 +151,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall Jump (32x32)_0
+      name: Wall Slide (32x32)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,7 +159,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -172,7 +172,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_1
+      name: Wall Slide (32x32)_1
       rect:
         serializedVersion: 2
         x: 32
@@ -180,7 +180,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -193,7 +193,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_2
+      name: Wall Slide (32x32)_2
       rect:
         serializedVersion: 2
         x: 64
@@ -201,7 +201,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,7 +214,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_3
+      name: Wall Slide (32x32)_3
       rect:
         serializedVersion: 2
         x: 96
@@ -222,7 +222,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -235,7 +235,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_4
+      name: Wall Slide (32x32)_4
       rect:
         serializedVersion: 2
         x: 128
@@ -243,7 +243,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -266,11 +266,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wall Jump (32x32)_0: 3974224528455760076
-      Wall Jump (32x32)_1: 403085039841989221
-      Wall Jump (32x32)_2: -6018873884784744797
-      Wall Jump (32x32)_3: -674972067355074983
-      Wall Jump (32x32)_4: 4366178942990776957
+      Wall Slide (32x32)_0: 3974224528455760076
+      Wall Slide (32x32)_1: 403085039841989221
+      Wall Slide (32x32)_2: -6018873884784744797
+      Wall Slide (32x32)_3: -674972067355074983
+      Wall Slide (32x32)_4: 4366178942990776957
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

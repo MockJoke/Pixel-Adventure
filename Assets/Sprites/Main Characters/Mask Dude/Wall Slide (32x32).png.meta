@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b332af1e6c55e94f8e5eb08fb4ab06b
+guid: 9b7e8d8d6e9ac904dba7f59ba8b11835
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -151,7 +151,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wall Jump (32x32)_0
+      name: Wall Slide (32x32)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,20 +159,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c00c8946edce6344a87b30fcea22e8a9
+      spriteID: f7e94af15066c4444a210e4e9a5b3363
       internalID: 3974224528455760076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_1
+      name: Wall Slide (32x32)_1
       rect:
         serializedVersion: 2
         x: 32
@@ -180,20 +180,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4776cde5de2067348b7619ffca8c5a41
+      spriteID: 7876527fc4db8434ebe9e2440e3fd7f8
       internalID: 403085039841989221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_2
+      name: Wall Slide (32x32)_2
       rect:
         serializedVersion: 2
         x: 64
@@ -201,20 +201,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0300542db92406a43ac5273ddd9cfe9c
+      spriteID: 0f989c48feb92bf49a21f1d8311cec2e
       internalID: -6018873884784744797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_3
+      name: Wall Slide (32x32)_3
       rect:
         serializedVersion: 2
         x: 96
@@ -222,20 +222,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 35a26961c8377114883f9bc484f35e11
+      spriteID: 52bbd4549414bd147b8f690181275409
       internalID: -674972067355074983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Wall Jump (32x32)_4
+      name: Wall Slide (32x32)_4
       rect:
         serializedVersion: 2
         x: 128
@@ -243,13 +243,13 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74fb40e98c3d03246b027eb716cf4b4f
+      spriteID: 118ea49af4c62954ca9813c9d5c6119f
       internalID: 4366178942990776957
       vertices: []
       indices: 
@@ -266,11 +266,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Wall Jump (32x32)_0: 3974224528455760076
-      Wall Jump (32x32)_1: 403085039841989221
-      Wall Jump (32x32)_2: -6018873884784744797
-      Wall Jump (32x32)_3: -674972067355074983
-      Wall Jump (32x32)_4: 4366178942990776957
+      Wall Slide (32x32)_0: 3974224528455760076
+      Wall Slide (32x32)_1: 403085039841989221
+      Wall Slide (32x32)_2: -6018873884784744797
+      Wall Slide (32x32)_3: -674972067355074983
+      Wall Slide (32x32)_4: 4366178942990776957
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
