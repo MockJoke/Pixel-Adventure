@@ -10,15 +10,16 @@ public class MonoBehaviourSingleton<T> : MonoBehaviour where T : Component
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
-            throw new System.Exception($"{Instance.name} {gameObject.name} An instance of this singleton already exists.");
+            Destroy(gameObject);
+            Debug.Log($"{Instance.name} {gameObject.name} An instance of this singleton already exists");
+            // throw new System.Exception($"{Instance.name} {gameObject.name} An instance of this singleton already exists.");
         }
         else
         {
             Instance = this as T;
+            
+            if (persistent)
+                DontDestroyOnLoad(this);
         }
-        
-        if (persistent)
-            DontDestroyOnLoad(Instance);
     }
 }
