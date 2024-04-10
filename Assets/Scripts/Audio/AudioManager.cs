@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : MonobehaviourSingleton<AudioManager>
+public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
     [SerializeField] private Sound[] effectSounds;
     [SerializeField] private Sound[] bgSounds;
