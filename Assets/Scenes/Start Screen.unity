@@ -1460,9 +1460,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 1684052016}
     m_Modifications:
     - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1990960116}
+    - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SelectChar
@@ -1470,6 +1482,10 @@ PrefabInstance:
     - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: CharacterSelectionMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769443662813028202, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4728236514654851203, guid: 83814f8545a06d44ca3264fe89f0ec62, type: 3}
       propertyPath: m_StaticEditorFlags
