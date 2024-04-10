@@ -6,12 +6,12 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 
 [Play on itch](https://mockjoke.itch.io/pixel-adventure)
 
-<img src="README-Resources/Start-Screen.png" alt="Start-Screen" width="500px">
-<img src="README-Resources/CharacterSelection-Menu.png" alt="CharacterSelection-Menu" width="500px">
-<img src="README-Resources/Gameplay-Level2.png" alt="Gameplay-Level2" width="500px">
-<img src="README-Resources/Gameplay-Level3.png" alt="Gameplay-Level3" width="500px">
-<img src="README-Resources/Gameplay-Level4.png" alt="Gameplay-Level4" width="500px">
-<img src="README-Resources/ExtraLives-Menu.png" alt="ExtraLives-Menu" width="500px">
+<img src="README-Resources/Start-Screen.png" alt="Start-Screen" width="350px">
+<img src="README-Resources/CharacterSelection-Menu.png" alt="CharacterSelection-Menu" width="350px">
+<img src="README-Resources/Gameplay-Level2.png" alt="Gameplay-Level2" width="350px">
+<img src="README-Resources/Gameplay-Level3.png" alt="Gameplay-Level3" width="350px">
+<img src="README-Resources/Gameplay-Level4.png" alt="Gameplay-Level4" width="350px">
+<img src="README-Resources/ExtraLives-Menu.png" alt="ExtraLives-Menu" width="350px">
 
 ## Features
 
