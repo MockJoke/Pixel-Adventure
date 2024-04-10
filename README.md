@@ -21,6 +21,7 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 ### TODO:
 
 - [x] Upgrade to new input system
+- [ ] Input rebinding
 - [x] Wall Climb & Jump
 - [ ] More unique enemies
 - [ ] Background scrolling
