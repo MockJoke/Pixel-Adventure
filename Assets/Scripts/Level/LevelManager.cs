@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviourSingleton<LevelManager>
 
     private void UnlockFirstLevel()
     {
-        // the very first time the game starts, the first level1 should be unlocked to play 
+        // the very first time the game starts, the level1 should be unlocked to play by default
         if (GetLevelStatus(Levels[0]) == LevelStatus.Locked)
         {
             SetLevelStatus(Levels[0], LevelStatus.Unlocked);
