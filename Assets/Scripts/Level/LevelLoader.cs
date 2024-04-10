@@ -46,4 +46,15 @@ public class LevelLoader : MonoBehaviour
     {
         levelBtn.interactable = LevelManager.Instance.GetLevelStatus(levelName) != LevelStatus.Locked;
     }
+
+    #region Debug Methods
+    // After unlocking all levels from LevelManager, need to refresh individual level loader buttons
+    // to set their interactivity again based on LevelStatus, because their status is getting set on start()
+    // & during its UI life cycle we are never enabling-disabling it so can't use of OnEnable()
+    [ContextMenu("Refresh Level Status")]
+    private void RefreshLevelStatus()
+    {
+        setLevelStatusOnButton();
+    }
+    #endregion
 }

@@ -78,4 +78,15 @@ public class LevelManager : MonobehaviourSingleton<LevelManager>
             SetLevelStatus(Levels[i], i == 0 ? LevelStatus.Unlocked : LevelStatus.Locked);
         }
     }
+
+    #region Debug Methods
+    [ContextMenu("Unlock All Levels")]
+    private void UnlockAllLevels()
+    {
+        foreach (LevelName level in Levels)
+        {
+            PlayerPrefs.SetInt(level.ToString(), (int)LevelStatus.Unlocked);
+        }
+    }
+    #endregion
 }
