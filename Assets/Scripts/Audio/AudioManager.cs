@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MonoBehaviourSingleton<AudioManager>
 {
     [SerializeField] private Sound[] effectSounds;
     [SerializeField] private Sound[] bgSounds;
@@ -16,23 +16,18 @@ public class AudioManager : Singleton<AudioManager>
     
     public bool isMuted = false;
     
-    protected override void Awake() 
+    void Start() 
     {
-        base.Awake();
-
         // get preferences
         mVol = PlayerPrefs.GetFloat("MusicVolume", 1f);
         eVol = PlayerPrefs.GetFloat("EffectsVolume", 1f);
-
+        
         createAudioSources(effectSounds, eVol);     // create sources for effects
         createAudioSources(bgSounds, mVol);   // create sources for music
         
         if (updateBgMusicOnSceneChange) 
             SceneManager.activeSceneChanged += ChangeBgMusicOnSceneChange;
-    }
-    
-    void Start() 
-    {
+        
         PlayMusic(true);
         
         SetMuteState();
