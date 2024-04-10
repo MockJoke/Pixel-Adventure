@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StartMenu : MonoBehaviour
 {
@@ -10,6 +11,17 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private Canvas ControlsCanvas;
     
+    [Tooltip("The first object to be selected in Start-Menu during UI navigation for controls other than mouse")]
+    [SerializeField] private GameObject firstSelectedStartMenuObj;
+    
+    [Tooltip("The first object to be selected in Level-Menu during UI navigation for controls other than mouse")]
+    [SerializeField] private GameObject firstSelectedLevelMenuObj;
+
+    void Awake()
+    {
+        EventSystem.current.SetSelectedGameObject(firstSelectedStartMenuObj);
+    }
+
     void Start()
     {
         startBtnText.text = LevelManager.Instance.GetLatestUnlockedLevelNo() == 0 ? "START" : "CONTINUE";
@@ -22,6 +34,7 @@ public class StartMenu : MonoBehaviour
     
     public void OpenHomeMenu()
     {
+        EventSystem.current.SetSelectedGameObject(firstSelectedStartMenuObj);
         HomeCanvas.enabled = true;
     }
     
@@ -34,6 +47,7 @@ public class StartMenu : MonoBehaviour
     {
         CloseHomeMenu();
         LevelsCanvas.enabled = true;
+        EventSystem.current.SetSelectedGameObject(firstSelectedLevelMenuObj);
     }
 
     public void CloseLevelsMenu()
