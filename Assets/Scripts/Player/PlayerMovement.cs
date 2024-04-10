@@ -34,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector2 grabLeftOffset = new Vector2(-0.5f, -0.4f);
     [SerializeField] private float wallSlideSpeed = 2.5f;
     [SerializeField] private Vector2 wallJumpForce = new Vector2(15f, 15f);
+
+    [Header("Managers")] 
+    [SerializeField] private PauseManager pauseManager;
     
     private float dirX = 0f;
     private int airJumpCnt = 0;
@@ -44,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     
     private static readonly int animState = Animator.StringToHash("state");
 
+    // private PlayerInputActions playerInputActions;
+    
     private enum MovementState
     {
         idle = 0,
@@ -68,6 +73,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (animator == null)
             animator = GetComponent<Animator>();
+
+        if (pauseManager == null)
+            pauseManager = FindObjectOfType<PauseManager>();
+        
+        // SetInputActions();
     }
 
     void Start()
@@ -186,6 +196,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #region Input Actions
+    // private void SetInputActions()
+    // {
+    //     playerInputActions = new PlayerInputActions();
+    //     playerInputActions.Player.Enable();
+    //     playerInputActions.Player.Move.performed += ReadHorizontalMovement;
+    //     playerInputActions.Player.Move.canceled += ReadHorizontalMovement;
+    //     playerInputActions.Player.Jump.performed += ReadJump;
+    //     playerInputActions.Player.Dash.performed += ReadDash;
+    //
+    //     playerInputActions.Player.Pause.performed += TogglePauseState;
+    //     playerInputActions.UI.Pause.performed += TogglePauseState;
+    // }
+    
     public void ReadHorizontalMovement(InputAction.CallbackContext context)
     {
         dirX = context.ReadValue<float>();
@@ -387,6 +410,12 @@ public class PlayerMovement : MonoBehaviour
         {
             charSprite.flipX = !charSprite.flipX;
         }
+    }
+
+    public void TogglePauseState(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            pauseManager.TogglePauseMenu();
     }
 
     #region Debug Methods

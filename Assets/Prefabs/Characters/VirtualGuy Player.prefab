@@ -14866,12 +14866,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  canWallGrab: 0
   grabCheckRadius: 0.2
   grabRightOffset: {x: 0.5, y: -0.4}
   grabLeftOffset: {x: -0.5, y: -0.4}
   wallSlideSpeed: 2.5
-  wallClimbForce: {x: 4, y: 14}
   wallJumpForce: {x: 15, y: 15}
+  pauseManager: {fileID: 0}
 --- !u!114 &7074810212961939118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14988,34 +14989,6 @@ MonoBehaviour:
     m_ActionId: 7504715a-13b0-4472-9a39-34a7d7394375
     m_ActionName: Player/BowAttack[/Keyboard/c]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 329ab8a0-3825-4eb6-bb48-29d84bd66e07
-    m_ActionName: Player/Toolkit[/Keyboard/t]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 301a6634-5fa4-4c5a-8559-345a3400818d
-    m_ActionName: Player/Skip[/Keyboard/p]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 68482bb6-52b3-4c66-baa8-839f7e2df57e
-    m_ActionName: Player/Continue[/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f1e162ff-15c8-4870-918d-165638ee6de4
-    m_ActionName: Player/Full Screen[/Keyboard/f11]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5843b73d-3a5b-4e89-aa14-5a42d71fb296
-    m_ActionName: Player/Quit[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 4d284ef2-d613-4cdf-a230-81da6cc157c0
-    m_ActionName: UI/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 368f66e0-86b9-44e9-a162-2d6bcdf8a826
-    m_ActionName: UI/Quit[/Keyboard/f4]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7074810212961939107}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
@@ -15031,6 +15004,78 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fa117c29-9374-4987-8ba0-7d3e814b0f1a
     m_ActionName: Player/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7074810212961939107}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: TogglePauseState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 114d507d-116c-4e70-b22f-f3613eb3f4c3
+    m_ActionName: Player/Pause[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d4674b72-fd55-40e8-8d2c-42a737809c1f
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2eb9715d-4583-459e-9e5f-0d3483028e6a
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 714b339e-80cd-47cc-a47b-f16c73e19b50
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 097d1c9f-82cf-42a7-aff7-4859ed6a019a
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 804162a6-a482-48a9-8c3f-153083a5e9b3
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 04986114-a5e4-4e3c-b400-63d1cc1f5afc
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4695f898-ba71-4888-82c6-e4e4212721e8
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff892ee9-6151-4b27-b216-a920d52a7ff5
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3a7025e4-2b6c-4618-b972-c3191f00adb3
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b68d63bd-86b8-4462-b109-817ab767cb19
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7074810212961939107}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: TogglePauseState
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eadd58ab-5964-402d-a97d-8d45b60f4678
+    m_ActionName: UI/Pause[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

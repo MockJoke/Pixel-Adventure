@@ -8,6 +8,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private Canvas controlsCanvas;
     [SerializeField] private PlayerInput playerInput;
+    // private PlayerInputActions playerInputActions;
     
     void Awake()
     {
@@ -18,11 +19,27 @@ public class PauseManager : MonoBehaviour
             playerInput = FindObjectOfType<PlayerInput>();
     }
 
+    public void TogglePauseMenu()
+    {
+        // playerInputActions = inputActions;
+        
+        if (pauseCanvas.enabled)
+        {
+            ClosePauseMenu();
+        }
+        else
+        {
+            OpenPauseMenu();
+        }
+    }
+
     public void OpenPauseMenu()
     {
         pauseCanvas.enabled = true;
         SetTimeScale(false);
         playerInput.SwitchCurrentActionMap("UI");
+        // playerInputActions.Player.Disable();
+        // playerInputActions.UI.Enable();
     }
 
     public void ClosePauseMenu(bool resetTimeScale = true)
@@ -33,6 +50,8 @@ public class PauseManager : MonoBehaviour
             SetTimeScale(true);
         
         playerInput.SwitchCurrentActionMap("Player");
+        // playerInputActions.Player.Enable();
+        // playerInputActions.UI.Disable();
     }
 
     public void HomeMenu()
