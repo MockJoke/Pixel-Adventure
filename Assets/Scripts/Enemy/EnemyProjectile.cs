@@ -57,8 +57,6 @@ public class EnemyProjectile : MonoBehaviour
 
         if (animator != null)
             animator.SetTrigger(explodeAnim); //When the object is a fireball explode it
-        else
-            Deactivate(); //When this hits any object deactivate arrow
     }
     
     private void Deactivate()
