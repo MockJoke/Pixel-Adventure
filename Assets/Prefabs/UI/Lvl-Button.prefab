@@ -234,10 +234,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+    m_PressedColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+    m_SelectedColor: {r: 0.68235296, g: 0.68235296, b: 0.68235296, a: 1}
+    m_DisabledColor: {r: 0.34901962, g: 0.34901962, b: 0.34901962, a: 0.78431374}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -281,4 +281,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelBtn: {fileID: 2769443662813028202}
-  levelName: Level1
+  levelName: 0
