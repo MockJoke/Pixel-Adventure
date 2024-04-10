@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelManager : Singleton<LevelManager>
+public class LevelManager : MonoBehaviourSingleton<LevelManager>
 {
     [SerializeField] private LevelName[] Levels;
     

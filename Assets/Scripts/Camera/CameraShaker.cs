@@ -1,7 +1,7 @@
 using Cinemachine;
 using UnityEngine;
 
-public class CameraShaker : Singleton<CameraShaker>
+public class CameraShaker : MonoBehaviourSingleton<CameraShaker>
 {
     [SerializeField] private CinemachineVirtualCamera vCam;
     private CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin;
