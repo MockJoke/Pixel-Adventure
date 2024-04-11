@@ -18,13 +18,6 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 - Simple PlayerPrefs based save system covering all necessary fields
 - UI/UX for game states (win, lose, pause), health, title screen etc.
 
-### TODO:
-
-- [ ] Wall Climb & Jump
-- [ ] Background scrolling
-- [ ] Player character with combat support
-- [ ] More unique enemies
-
 ## Credits & Attributions
 
 ### Art Assets:
@@ -32,7 +25,7 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 - [PixelAdventure](https://pixelfrog-assets.itch.io/pixel-adventure-1)
 - [PixelAdventure2](https://pixelfrog-assets.itch.io/pixel-adventure-1)
 
-### Disclaimer
+### Disclaimer:
 
 This project uses various assets obtained from different sources. While efforts have been made to ensure proper attribution, if any attribution is missing or incorrect, please contact me immediately so that proper credit can be given or the asset can be removed if necessary.
 
