@@ -40,6 +40,7 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 - [ ] More unique enemies
 - [ ] Background scrolling
 - [ ] Player character with combat support
+- [ ] Screen Transition Fade In/out
 
 ## Credits & Attributions
 
