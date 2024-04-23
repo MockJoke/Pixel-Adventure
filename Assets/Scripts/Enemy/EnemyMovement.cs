@@ -13,10 +13,11 @@ public class EnemyMovement : MonoBehaviour
     [Header("Movement parameters")]
     [SerializeField] private float speed = 2f;
     [SerializeField] private int defaultSpriteFacing = -1;
-    [SerializeField] private bool isRangedEnemy = false;
-    [SerializeField] private Transform bulletsHolder;
     [SerializeField] private float idleDuration = 1f;
     [SerializeField] private MovementDirection initMoveDir = MovementDirection.left;
+    [SerializeField] private bool isRangedEnemy = false;
+    [SerializeField] private Transform bulletsHolder;
+    [SerializeField] private bool hasMoveAnim = true;
     
     private Vector3 initScale;
     private bool movingLeft = true;
@@ -47,7 +48,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        animator.SetBool(movingAnim, false);
+        if (hasMoveAnim)
+            animator.SetBool(movingAnim, false);
     }
 
     void Update()
@@ -70,7 +72,9 @@ public class EnemyMovement : MonoBehaviour
 
     private void DirectionChange()
     {
-        animator.SetBool(movingAnim, false);
+        if (hasMoveAnim)
+            animator.SetBool(movingAnim, false);
+        
         idleTimer += Time.deltaTime;
 
         if(idleTimer > idleDuration)
@@ -80,7 +84,9 @@ public class EnemyMovement : MonoBehaviour
     private void MoveInDirection(int _direction)
     {
         idleTimer = 0;
-        animator.SetBool(movingAnim, true);
+        
+        if (hasMoveAnim)
+            animator.SetBool(movingAnim, true);
 
         //Make enemy face direction
         transform.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction * defaultSpriteFacing,

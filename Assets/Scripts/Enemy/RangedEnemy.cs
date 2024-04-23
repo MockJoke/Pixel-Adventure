@@ -5,11 +5,12 @@ public class RangedEnemy : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private EnemyMovement enemyMovement;
-    
-    [Header("Attack Parameters")]
+
+    [Header("Attack Parameters")] 
+    [SerializeField] private bool isAerial = false;
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
-    [SerializeField] private int damage;
+    // [SerializeField] private int damage;
     [SerializeField] private Transform bulletPoint;
     [SerializeField] private GameObject[] bullets;
 
@@ -70,10 +71,22 @@ public class RangedEnemy : MonoBehaviour
 
     private bool PlayerInSight()
     {
-        RaycastHit2D hit =
-            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
-            0, Vector2.left, 0, playerLayer);
+        RaycastHit2D hit;
+        
+        if (isAerial)
+        {
+            hit =
+                Physics2D.BoxCast(boxCollider.bounds.center + -transform.up * range * transform.localScale.y * colliderDistance,
+                    new Vector3(boxCollider.bounds.size.x, boxCollider.bounds.size.y * range, boxCollider.bounds.size.z),
+                    0, Vector2.down, 0, playerLayer);
+        }
+        else
+        {
+            hit =
+                Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+                new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
+                0, Vector2.left, 0, playerLayer);
+        }
 
         return hit.collider != null;
     }
@@ -81,7 +94,16 @@ public class RangedEnemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+
+        if (isAerial)
+        {
+            Gizmos.DrawWireCube(boxCollider.bounds.center + -transform.up * range * transform.localScale.y * colliderDistance,
+                new Vector3(boxCollider.bounds.size.x, boxCollider.bounds.size.y * range, boxCollider.bounds.size.z));
+        }
+        else
+        {
+            Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
+                new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+        }
     }
 }

@@ -5,8 +5,9 @@ public class EnemyProjectile : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Animator animator;
     [SerializeField] private BoxCollider2D coll;
-    
-    [Header("Movement")]
+
+    [Header("Movement")] 
+    [SerializeField] private MovementDirection projectileDir = MovementDirection.left;
     [SerializeField] private float speed;
     [SerializeField] private float resetTime;
     private float lifetime;
@@ -36,8 +37,7 @@ public class EnemyProjectile : MonoBehaviour
         if (hit) 
             return;
         
-        float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(movementSpeed, 0, 0);
+        Move();
 
         lifetime += Time.deltaTime;
         
@@ -45,9 +45,26 @@ public class EnemyProjectile : MonoBehaviour
             gameObject.SetActive(false);
     }
 
+    private void Move()
+    {
+        float movementSpeed = speed * Time.deltaTime;
+
+        switch (projectileDir)
+        {
+            case MovementDirection.left:
+            case MovementDirection.right:
+            case MovementDirection.none:
+                transform.Translate(movementSpeed, 0, 0);
+                break;
+            case MovementDirection.up:
+            case MovementDirection.down:
+                transform.Translate(0, movementSpeed, 0);
+                break;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject);
         hit = true;
         
         if (collision.CompareTag("Player"))
@@ -56,7 +73,7 @@ public class EnemyProjectile : MonoBehaviour
         coll.enabled = false;
 
         if (animator != null)
-            animator.SetTrigger(explodeAnim); //When the object is a fireball explode it
+            animator.SetTrigger(explodeAnim);
     }
     
     private void Deactivate()
