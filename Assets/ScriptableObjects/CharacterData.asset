@@ -85,3 +85,7 @@ MonoBehaviour:
     grabLeftOffset: {x: -0.5, y: -0.4}
     wallSlideSpeed: 2.5
     wallJumpForce: {x: 15, y: 15}
+  playerLifeData:
+    InitLifeCount: 3
+    MaxLivesBound: 100
+    FoodTradeForLivesFactor: 3

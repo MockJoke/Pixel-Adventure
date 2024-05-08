@@ -14896,6 +14896,7 @@ MonoBehaviour:
   playerMovement: {fileID: 7074810212961939107}
   gameOverMenu: {fileID: 0}
   checkpointManager: {fileID: 0}
+  charData: {fileID: 11400000, guid: b8742332edaee3a44bfc6e4df6892380, type: 2}
 --- !u!114 &7074810212961939117
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class PlayerLife : MonoBehaviour
     
     [Header("Life counts")]
     [SerializeField] private int LifeCount = 3;
-    public int maxLifeBound = 100;
+    [SerializeField] private int maxLifeBound = 100;
     [SerializeField] private TextMeshProUGUI heartsCount;
     // [SerializeField] private GameObject[] hearts;
     
@@ -22,6 +22,8 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private GameOverMenu gameOverMenu;
     [SerializeField] private CheckpointManager checkpointManager;
+
+    [SerializeField] private CharacterDataSO charData;
     
     private static readonly int deathAnim = Animator.StringToHash("death");
 
@@ -45,7 +47,11 @@ public class PlayerLife : MonoBehaviour
         if (checkpointManager == null)
             checkpointManager = FindObjectOfType<CheckpointManager>();
 
-        LifeCount = PlayerPrefs.GetInt("LifeCount", 3);
+        int initLifeCnt = charData.playerLifeData.InitLifeCount;
+        LifeCount = PlayerPrefs.GetInt("LifeCount", initLifeCnt);
+        PlayerPrefs.SetInt("LifeCount", LifeCount);
+        
+        maxLifeBound = charData.playerLifeData.MaxLivesBound;
         
         // SetHearts();
         UpdateHeartsCountsUI();

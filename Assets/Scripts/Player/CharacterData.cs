@@ -28,6 +28,16 @@ public class CharacterDataSO : ScriptableObject
     }
 
     public List<CharacterData> characterData;
+    
+    [System.Serializable]
+    public struct PlayerLifeData
+    {
+        public int InitLifeCount;
+        public int MaxLivesBound;
+        public int FoodTradeForLivesFactor;
+    }
+
+    public PlayerLifeData playerLifeData;
 }
 
 public enum CharacterName
