@@ -1146,6 +1146,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec254922c8bb5ae478d9f327e744db42, type: 3}
+--- !u!114 &705849910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2031210916869684843, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+  m_PrefabInstance: {fileID: 8458057521605798271}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 477928879a623874c998835492a177f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &739763974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25107,7 +25118,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3800045
+      value: -1.380007
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -26162,6 +26173,10 @@ PrefabInstance:
       propertyPath: playerLife
       value: 
       objectReference: {fileID: 1499299255}
+    - target: {fileID: 4357988174487253905, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+      propertyPath: playerLife
+      value: 
+      objectReference: {fileID: 1499299255}
     - target: {fileID: 4386221783212425741, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -26262,6 +26277,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5475122580304770684, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 705849910}
+    - target: {fileID: 5475122580304770684, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenConfirmationPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475122580304770684, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RestartJourneyConfirmationMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 5760439348955944287, guid: b811c3e4c330ca246af696217119dd3e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -26322,8 +26349,8 @@ SceneRoots:
   - {fileID: 1918923987}
   - {fileID: 2728440179732677087}
   - {fileID: 482680088}
-  - {fileID: 8458057521605798271}
   - {fileID: 7930251007940696233}
+  - {fileID: 8458057521605798271}
   - {fileID: 938460391}
   - {fileID: 749281734}
   - {fileID: 1122050830}

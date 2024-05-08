@@ -10,6 +10,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private CharacterSelectionMenu characterSelectionMenu;
     [SerializeField] private SettingsManager settingsManager;
     [SerializeField] private Canvas ControlsCanvas;
+    [SerializeField] private InsufficientLivesMenu insufficientLivesMenu;
     
     [Tooltip("The first object to be selected in Start-Menu during UI navigation for controls other than mouse")]
     [SerializeField] private GameObject firstSelectedStartMenuObj;
@@ -29,7 +30,14 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        LevelManager.Instance.GoToLatestUnlockedLevel();
+        if(PlayerPrefs.GetInt("LifeCount", 3) > 0)
+        {
+            LevelManager.Instance.GoToLatestUnlockedLevel();
+        }
+        else
+        {
+            OpenInsufficientLivesMenu();
+        }
     }
     
     public void OpenHomeMenu()
@@ -45,9 +53,16 @@ public class StartMenu : MonoBehaviour
     
     public void OpenLevelsMenu()
     {
-        CloseHomeMenu();
-        LevelsCanvas.enabled = true;
-        EventSystem.current.SetSelectedGameObject(firstSelectedLevelMenuObj);
+        if (PlayerPrefs.GetInt("LifeCount", 3) > 0)
+        {
+            CloseHomeMenu();
+            LevelsCanvas.enabled = true;
+            EventSystem.current.SetSelectedGameObject(firstSelectedLevelMenuObj);
+        }
+        else
+        {
+            OpenInsufficientLivesMenu();
+        }
     }
 
     public void CloseLevelsMenu()
@@ -78,5 +93,11 @@ public class StartMenu : MonoBehaviour
     {
         ControlsCanvas.enabled = false;
         OpenHomeMenu();
+    }
+
+    public void OpenInsufficientLivesMenu()
+    {
+        // CloseHomeMenu();
+        insufficientLivesMenu.OpenMenu();
     }
 }
