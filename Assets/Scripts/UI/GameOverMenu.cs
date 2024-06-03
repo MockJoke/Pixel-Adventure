@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
     [SerializeField] private Canvas gameOverCanvas;
     [SerializeField] private GameObject mainPanel;
-    [SerializeField] private Button startAgainBtn;
+    [SerializeField] private GameObject startLevelAgainBtn;
 
     private void Awake()
     {
@@ -19,7 +18,7 @@ public class GameOverMenu : MonoBehaviour
         gameOverCanvas.enabled = true;
         SetTimeScale(false);
 
-        // SetStartAgainBtn();
+        SetStartAgainBtn();
     }
     
     public void CloseGameOverMenu()
@@ -30,7 +29,7 @@ public class GameOverMenu : MonoBehaviour
 
     private void SetStartAgainBtn()
     {
-        startAgainBtn.gameObject.SetActive(PlayerPrefs.GetInt("LifeCount") < 1);
+        startLevelAgainBtn.SetActive(PlayerPrefs.GetInt("LifeCount", 0) > 0);
     }
     
     private void SetTimeScale(bool reset)
@@ -59,6 +58,6 @@ public class GameOverMenu : MonoBehaviour
     {
         mainPanel.SetActive(true);
         
-        // SetStartAgainBtn();
+        SetStartAgainBtn();
     }
 }

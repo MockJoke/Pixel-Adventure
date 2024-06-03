@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 5427882530439528739}
   mainPanel: {fileID: 2952585268429802791}
-  startAgainBtn: {fileID: 7234353952666435921}
+  startLevelAgainBtn: {fileID: 1106422969271525518}
 --- !u!1 &5454040745576978188
 GameObject:
   m_ObjectHideFlags: 0
