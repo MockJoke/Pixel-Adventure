@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: buddhu games
   productName: Pixel Adventure
-  defaultCursor: {fileID: 2800000, guid: dd1034fb4233b164381a7a9927da9202, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 1c105f8f9e1564d4fbd694e9bf834564, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
