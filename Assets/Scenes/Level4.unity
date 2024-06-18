@@ -7049,6 +7049,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameplayControlsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 784393248379888099, guid: d06a491252b305f44a9d62e8ea1551fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1289815810}
+    - target: {fileID: 784393248379888099, guid: d06a491252b305f44a9d62e8ea1551fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseControls
+      objectReference: {fileID: 0}
+    - target: {fileID: 784393248379888099, guid: d06a491252b305f44a9d62e8ea1551fe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1931165705102187292, guid: d06a491252b305f44a9d62e8ea1551fe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -40472,7 +40484,7 @@ PrefabInstance:
       objectReference: {fileID: 1054332644}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8701434
+      value: 2.8777535
       objectReference: {fileID: 0}
     - target: {fileID: 4610883042436760411, guid: 5b22ddfaf9c13c14fa5fd8dc105283ef, type: 3}
       propertyPath: m_LocalPosition.y
