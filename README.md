@@ -44,9 +44,13 @@ A pixel adventure themed 2D platformer game made using Unity Engine
 
 ## Credits & Attributions
 
+#### Utilities:
+- https://aseprite.org/
+
 #### Graphics:
 - https://pixelfrog-assets.itch.io/pixel-adventure-1
 - https://pixelfrog-assets.itch.io/pixel-adventure-2
+- https://kenney.nl/assets/cursor-pack
 
 #### Sounds: 
 - https://freesound.org/people/RHumphries/packs/117/
