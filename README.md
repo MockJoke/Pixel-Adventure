@@ -19,6 +19,8 @@ A pixel adventure themed 2D platformer game made using Unity Engine
     <img src="README-Resources/ExtraLives-Menu.png" alt="ExtraLives-Menu" width="300px">
 </p>
 
+[Demo video](https://youtu.be/CdCLFUjtBYA)
+
 ## Features
 
 - 2D platformer character with all basic mechanics i.e. movement, flipping, jump-extra jump, wall grab & wall jump, dash, animations
