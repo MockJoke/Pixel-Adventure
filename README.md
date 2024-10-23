@@ -19,7 +19,11 @@ A pixel adventure themed 2D platformer game made using Unity Engine
     <img src="README-Resources/ExtraLives-Menu.png" alt="ExtraLives-Menu" width="300px">
 </p>
 
-[Demo video](https://youtu.be/CdCLFUjtBYA)
+<br>
+
+<div align="center">
+  <a href="https://youtu.be/CdCLFUjtBYA" target="_blank">Demo Video</a>
+</div>
 
 ## Features
 
